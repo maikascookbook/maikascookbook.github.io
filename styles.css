@@ -88,3 +88,6 @@ main{min-width:0}
 .closing-banner{padding:28px 23px}
 .closing-note{display:none}
 }
+
+/* High-resolution assets, retaining approved version-5 layout */
+.index-tile img{object-fit:contain;mix-blend-mode:normal}
