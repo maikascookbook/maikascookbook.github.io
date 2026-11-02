@@ -668,3 +668,128 @@
     console.warn('Batch 6 recipe storage update:', error);
   }
 })();
+/* MAIKA’S COOKBOOK — BATCH 7: Vanilla Butter Cake + Toddy Tres Leches
+   APPEND ONLY to the bottom of the existing recipe-updates.js, after the last })();.
+   Do NOT replace existing batches or change styles.css. */
+(() => {
+  'use strict';
+  const updates = [
+  {
+    "id": "seed-2",
+    "title": "Rich Vanilla Butter Cake with Swiss Meringue Buttercream",
+    "category": "Desserts & Baking",
+    "time": "30 min preparation + 35–45 min baking + cooling and decorating",
+    "servings": "10–12 slices · two 20 cm round layers",
+    "description": "A tender, buttery vanilla layer cake with a golden crumb and silky, not-too-sweet Swiss meringue buttercream.",
+    "image": "vanilla-swiss-meringue-cake-batch7.jpg",
+    "seed": true,
+    "ingredients": [
+      "BUTTER CAKE — 225 g unsalted butter, softened",
+      "300 g granulated sugar",
+      "4 large eggs, at room temperature",
+      "2½ tsp vanilla extract",
+      "300 g all-purpose flour",
+      "2½ tsp baking powder",
+      "½ tsp fine salt",
+      "180 ml whole milk, at room temperature",
+      "SWISS MERINGUE BUTTERCREAM — 4 large egg whites (approximately 120 g)",
+      "240 g granulated sugar",
+      "300 g unsalted butter, softened but cool",
+      "2 tsp vanilla extract",
+      "Small pinch of salt",
+      "FOR PREPARING THE TINS — A little butter and parchment paper"
+    ],
+    "method": [
+      "Preheat the oven to 170°C using conventional top-and-bottom heat. Grease and line the bases of two 20 cm round cake tins.",
+      "Sift or whisk the flour, baking powder and salt together in a separate bowl, making sure the baking powder is evenly distributed.",
+      "Using the paddle attachment of a stand mixer, beat the softened butter and granulated sugar on medium speed for approximately 4–5 minutes, until noticeably paler and fluffy. Scrape down the bowl regularly.",
+      "Add the eggs one at a time, mixing well after each addition. Add the vanilla extract and mix briefly. If the mixture begins to split, add a spoonful of the measured flour.",
+      "On low speed, add the dry ingredients in three additions, alternating with the milk in two additions. Begin and finish with flour. Mix only until combined, then gently fold with a spatula to check for any unmixed flour at the bottom.",
+      "Divide the batter equally between the prepared tins and smooth the surfaces. Bake for approximately 35–45 minutes, checking from minute 30; the cakes are ready when the centres spring back lightly and a skewer comes out clean or with a few moist crumbs.",
+      "Cool the cakes in their tins for 10–15 minutes, then turn out onto wire racks and allow them to cool completely before frosting.",
+      "To make the Swiss meringue buttercream, put the egg whites and sugar into a clean heatproof bowl over a pan of gently simmering water, ensuring the bowl does not touch the water. Whisk continuously until the sugar dissolves and the mixture reaches 70–72°C on a food thermometer.",
+      "Transfer the mixture to the stand mixer with the whisk attachment. Whip on medium-high speed until thick, glossy, firm peaks form and the bowl has cooled to room temperature. This cooling step is important to prevent the butter from melting.",
+      "Switch to the paddle attachment. Add the softened-but-cool butter gradually, a few pieces at a time, beating until incorporated. The mixture may look curdled temporarily; continue mixing. If it becomes soupy, refrigerate briefly and beat again.",
+      "Add the vanilla and a pinch of salt. Mix on low speed until the buttercream is smooth, silky and relatively free of air bubbles.",
+      "Place the first completely cooled cake layer on a stand or serving plate. Spread an even layer of Swiss meringue buttercream over the top, then place the second cake layer on top.",
+      "Apply a thin crumb coat to the top and sides and refrigerate for approximately 15–20 minutes. Use the remaining buttercream to frost the cake generously, smoothing the sides and creating gentle swirls on top.",
+      "Allow the cake to come toward room temperature before serving so the buttercream becomes silky and the cake tastes tender and buttery. Cut into slices with a clean sharp knife."
+    ],
+    "notes": "This is the richer vanilla BUTTER cake, separate from the lighter vanilla sponge recipe. The two-layer 20 cm format is a presentation choice for this version; the original saved recipe did not specify a pan size. Swiss meringue buttercream has a silkier, less sugary finish than American buttercream. Use a thermometer for the heated egg whites; do not add butter until the meringue has cooled. Keep the cake chilled if storing and bring slices toward room temperature to serve."
+  },
+  {
+    "id": "seed-9",
+    "title": "Toddy Tres Leches Cake",
+    "category": "Desserts & Baking",
+    "time": "45 min preparation + 28–35 min baking + overnight chilling",
+    "servings": "12–15 portions · 23 × 33 cm dish",
+    "description": "A deeply soaked, delicate vanilla-and-Toddy sponge with chocolate-milk tres leches and a silky piped meringue topping, inspired by the original homemade cake.",
+    "image": "toddy-tres-leches-batch7.jpg",
+    "seed": true,
+    "ingredients": [
+      "SPONGE — 6 large eggs",
+      "160 g granulated sugar",
+      "170 g all-purpose flour",
+      "30 g Toddy chocolate powder",
+      "60 ml whole milk",
+      "25 ml neutral vegetable oil",
+      "8 g baking powder",
+      "10 ml vanilla extract",
+      "Pinch of salt",
+      "TRES LECHES SOAK — 400 ml evaporated milk",
+      "300 g sweetened condensed milk",
+      "200 ml heavy cream",
+      "100 g Toddy chocolate powder",
+      "½ tsp vanilla extract",
+      "Pinch of salt",
+      "Extra whole or evaporated milk, to adjust sweetness and consistency",
+      "SWISS MERINGUE TOPPING — 3 large egg whites (approximately 90 g)",
+      "180 g granulated sugar",
+      "½ tsp vanilla extract",
+      "10–15 g Toddy powder, optional, for a light dusting just before serving"
+    ],
+    "method": [
+      "Preheat the oven to 170°C using conventional heat. Lightly grease or line a 23 × 33 cm baking dish suitable for serving the cake directly from the dish.",
+      "Beat the eggs and sugar using the stand mixer whisk attachment for approximately 7–10 minutes, until very pale, thick and ribbon-like. The mixture should leave a visible trail briefly when the whisk is lifted.",
+      "Sift together the flour, Toddy powder, baking powder and salt. Fold these dry ingredients into the whipped eggs in several additions, using a wide spatula and gentle movements to preserve as much air as possible.",
+      "In a separate bowl, combine the milk, vegetable oil and vanilla. Stir a few spoonfuls of batter into this mixture to lighten it, then gently fold everything back into the main batter.",
+      "Pour into the prepared baking dish and bake for approximately 28–35 minutes, until the cake is springy in the centre and a skewer comes out clean. Allow it to cool until just warm.",
+      "Prepare the soak by whisking together the evaporated milk, condensed milk, heavy cream, Toddy, vanilla and salt until the powder is fully incorporated. Taste the mixture before pouring it over the cake.",
+      "If the milk mixture is sweeter than you prefer, add extra evaporated milk or whole milk a little at a time. The finished soak should taste balanced, creamy and gently chocolatey, not intensely chocolate-flavoured.",
+      "Use a skewer to make holes all across the warm sponge, reaching almost to the bottom. Slowly pour the tres leches mixture over the cake in several rounds, waiting for each addition to absorb before adding more.",
+      "Continue soaking until the sponge is thoroughly saturated. It is normal for some milk to collect at the edges and bottom of the dish. Cover and refrigerate for at least 6 hours, preferably overnight.",
+      "For the Swiss meringue topping, combine the egg whites and sugar in a clean heatproof bowl over gently simmering water, ensuring the bowl does not touch the water. Whisk continuously until the sugar has dissolved and the mixture reaches 70–72°C on a food thermometer.",
+      "Transfer the warm egg-white mixture to the stand mixer with the whisk attachment. Whip until thick, glossy, stable peaks form and the bowl has cooled. Beat in the vanilla briefly.",
+      "For the piped finish shown in the photograph, transfer the meringue to a piping bag fitted with a wide star or round tip. Pipe close rows of soft swirls over the fully chilled tres leches cake. Alternatively, spread it generously with an offset spatula.",
+      "If desired, dust a little Toddy powder over the meringue just before serving. Avoid folding a large amount of Toddy into the finished meringue, since it can make the topping lose firmness.",
+      "Cut the cake into generous squares and serve chilled, spooning some of the chocolate-milk soak from the dish around each portion."
+    ],
+    "notes": "This recipe retains the original vanilla sponge with a subtle Toddy flavour and a generous three-milk soak. In the earlier homemade attempt the soak initially tasted too sweet; balance it with additional evaporated or whole milk. The original topping was Italian meringue and became less firm when Toddy was mixed into it. This version PROPOSES Swiss meringue for a silkier texture, but that variation has not yet been tested on this cake. The approved image is a stylized AI interpretation of the user’s actual tres leches photograph."
+  }
+];
+  const byId = new Map(updates.map(recipe => [recipe.id, recipe]));
+  function merge(recipes) {
+    if (!Array.isArray(recipes)) return recipes;
+    const merged = recipes.map(recipe =>
+      byId.has(recipe.id) ? { ...recipe, ...byId.get(recipe.id) } : recipe
+    );
+    for (const update of updates) {
+      if (!merged.some(recipe => recipe.id === update.id)) merged.push({ ...update });
+    }
+    return merged;
+  }
+  if (Array.isArray(window.SEED_RECIPES)) {
+    window.SEED_RECIPES = merge(window.SEED_RECIPES);
+  }
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (Array.isArray(saved)) {
+        localStorage.setItem('maika_recipes', JSON.stringify(merge(saved)));
+      }
+    }
+  } catch (error) {
+    console.warn('Batch 7 recipe storage update:', error);
+  }
+})();
