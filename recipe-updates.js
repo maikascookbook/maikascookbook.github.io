@@ -1025,3 +1025,114 @@
     console.warn('Batch 9 recipe storage update:', error);
   }
 })();
+/* Maika's Cookbook — Batch 10: Garlic Parmesan Mashed Potatoes + Mushroom Risotto.
+   APPEND this whole block to the END of the EXISTING recipe-updates.js.
+   Do not replace the file or delete previous batches. */
+(() => {
+  'use strict';
+  const updates = [
+  {
+    "id": "seed-15",
+    "title": "Garlic & Herb Parmesan Mashed Potatoes",
+    "category": "Sides & Sauces",
+    "time": "10 min preparation + 25–30 min cooking",
+    "servings": "3–4 as a side",
+    "description": "Rich, velvety mashed potatoes enriched with garlic-and-thyme-infused milk, plenty of butter and freshly grated Parmesan.",
+    "image": "garlic-parmesan-mashed-potatoes-batch10.jpg",
+    "seed": true,
+    "ingredients": [
+      "6 small-to-medium potatoes (approximately 750–900 g)",
+      "60–80 g unsalted butter, cubed",
+      "120–180 ml whole milk",
+      "40–60 g freshly grated Parmesan",
+      "3–4 garlic cloves, lightly crushed",
+      "3–4 fresh thyme sprigs",
+      "Fine salt, to taste",
+      "Freshly ground black pepper, to taste"
+    ],
+    "method": [
+      "Prepare the potatoes. Peel the potatoes and cut them into evenly sized chunks, approximately 4–5 cm, so they cook at the same rate.",
+      "Start in cold water. Place the potatoes in a large saucepan and cover with cold water by approximately 2–3 cm. Season the water generously with salt.",
+      "Cook until tender. Bring to a gentle boil, then reduce to a steady simmer. Cook for approximately 15–25 minutes, depending on the size and variety of the potatoes, until a knife passes through without resistance.",
+      "Infuse the milk. While the potatoes cook, add the milk, crushed garlic cloves and thyme sprigs to a small saucepan.",
+      "Warm gently. Heat the milk over low heat for approximately 10–15 minutes, until fragrant and hot without boiling vigorously. Remove from the heat and let the garlic and thyme continue infusing.",
+      "Drain thoroughly. Once the potatoes are tender, drain them well. Return them to the warm saucepan over very low heat for approximately one minute to allow excess moisture to evaporate.",
+      "Mash while hot. Pass the potatoes through a potato ricer for the smoothest texture, or mash thoroughly by hand. Avoid a blender or food processor, which can make them gluey.",
+      "Add the butter first. Add approximately 60 g of cubed butter to the hot potatoes and gently fold until fully absorbed.",
+      "Incorporate the milk. Strain the garlic-and-thyme-infused milk, then add it gradually. Begin with approximately 120 ml and increase until the mash reaches your preferred creamy consistency.",
+      "Add the Parmesan. Fold in approximately 50 g of finely grated Parmesan. Taste and add more if you want a stronger cheesy flavour.",
+      "Adjust the seasoning. Add freshly ground black pepper and salt as needed, remembering that Parmesan already contributes saltiness.",
+      "Finish the texture. If the mash feels too thick, add another splash of warm milk. For an especially luxurious finish, incorporate the remaining butter.",
+      "Serve immediately. Transfer to a warm serving bowl, create soft swirls with a spoon and garnish with a little thyme or additional Parmesan."
+    ],
+    "notes": "For silky potatoes, add the butter before the warm infused milk and avoid overworking the starch. Start with approximately 150 ml milk and 50 g Parmesan, then adjust according to texture and taste."
+  },
+  {
+    "id": "seed-16",
+    "title": "Creamy Mushroom Parmesan Risotto",
+    "category": "Pasta & Rice",
+    "time": "15 min preparation + 30–40 min cooking",
+    "servings": "6–8",
+    "description": "A creamy, deeply savoury risotto with golden sautéed mushrooms, Parmesan and thyme, made with round-grain rice.",
+    "image": "mushroom-parmesan-risotto-batch10.jpg",
+    "seed": true,
+    "ingredients": [
+      "500 g round-grain rice suitable for risotto (J. Sendra or Arborio)",
+      "500–600 g fresh mushrooms, sliced",
+      "1 medium onion, finely diced",
+      "4 garlic cloves, minced",
+      "1.5–2 litres chicken or vegetable stock, kept hot",
+      "150 ml dry white wine (optional)",
+      "80 g freshly grated Parmesan",
+      "40 g unsalted butter",
+      "2 tbsp olive oil",
+      "3–4 fresh thyme sprigs",
+      "Salt and freshly ground black pepper, to taste"
+    ],
+    "method": [
+      "Prepare the stock. Pour the chicken or vegetable stock into a saucepan and bring it to a gentle simmer. Keep it hot throughout cooking.",
+      "Prepare the mushrooms. Clean the mushrooms with a slightly damp cloth and slice them evenly. Avoid soaking them in water.",
+      "Brown the mushrooms. Heat one tablespoon of olive oil in a large frying pan over medium-high heat. Add the mushrooms in batches, allowing them to develop a golden-brown colour before stirring too much.",
+      "Season and reserve. Once the mushrooms are browned and their excess moisture has evaporated, season lightly with salt and pepper. Transfer to a plate and set aside.",
+      "Prepare the aromatics. In a wide, heavy-bottomed saucepan, heat the remaining olive oil over medium heat. Add the finely diced onion and cook gently for approximately 5–7 minutes until softened and translucent.",
+      "Add the garlic and thyme. Stir in the minced garlic and thyme leaves. Cook for approximately one minute, until fragrant.",
+      "Toast the rice. Add the dry rice directly to the saucepan without rinsing it. Stir for 1–2 minutes so the grains become coated in the aromatic oil.",
+      "Deglaze with wine. If using white wine, pour it into the saucepan and stir until most of the liquid has evaporated.",
+      "Begin adding stock. Add one or two ladles of hot stock, stirring frequently. Allow most of the liquid to be absorbed before adding another ladle.",
+      "Continue cooking. Repeat the process gradually for approximately 18–22 minutes, maintaining a gentle simmer. Stir regularly to help release the rice's starch and create a creamy consistency.",
+      "Check the rice. Begin tasting toward the end of cooking. The grains should be tender with a slight bite in the centre, not hard or chalky.",
+      "Add the mushrooms. Return the sautéed mushrooms to the saucepan and stir gently. Reserve a small portion for garnishing if desired.",
+      "Adjust the consistency. Add another splash of hot stock if the risotto has become too thick. It should be creamy and gently spread across the plate rather than sitting in a stiff mound.",
+      "Finish with butter and Parmesan. Turn off the heat. Add the butter and freshly grated Parmesan, stirring gently until melted and incorporated.",
+      "Rest briefly. Allow the risotto to rest for approximately one minute, then stir again. Adjust the seasoning with salt and black pepper.",
+      "Serve immediately. Spoon the risotto into warm shallow bowls. Finish with reserved golden mushrooms, a little extra Parmesan and fresh thyme."
+    ],
+    "notes": "The original version used J. Sendra round-grain rice, retained here as an option. Browning the mushrooms separately builds flavour. Risotto is best served immediately; keep extra hot stock ready to loosen it before serving."
+  }
+];
+  const byId = new Map(updates.map(recipe => [recipe.id, recipe]));
+  function merge(items) {
+    if (!Array.isArray(items)) return items;
+    const result = items.map(recipe =>
+      byId.has(recipe.id) ? { ...recipe, ...byId.get(recipe.id) } : recipe
+    );
+    for (const recipe of updates) {
+      if (!result.some(item => item.id === recipe.id)) result.push({ ...recipe });
+    }
+    return result;
+  }
+  if (Array.isArray(window.SEED_RECIPES)) {
+    window.SEED_RECIPES = merge(window.SEED_RECIPES);
+  }
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (Array.isArray(saved)) {
+        localStorage.setItem('maika_recipes', JSON.stringify(merge(saved)));
+      }
+    }
+  } catch (error) {
+    console.warn('Batch 10 recipe storage update:', error);
+  }
+})();
