@@ -1,0 +1,35 @@
+MAIKA'S COOKBOOK — BATCH 12 CORRECTED (REAL LANDSCAPE PHOTOGRAPHS)
+
+This corrected package preserves both complete recipes and changes only their
+image fields to REAL photographs from Unsplash, not AI-generated images.
+
+The photographs are displayed using 16:9 crop requests (2400 x 1350)
+served by Unsplash's image CDN. These are online images, not JPG files bundled
+in this ZIP. The originals were not downloaded or artificially upscaled.
+An internet connection is required for them to display on the website.
+
+IMPORTANT: These are substitute real photographs, NOT the exact second/third
+reference preview previously selected. That exact image could not be recovered.
+
+SOURCES & CREDITS
+Cake: Will Echols, Unsplash (free Unsplash License)
+https://unsplash.com/photos/sliced-chocolate-cake-beside-fork-on-plate-P_l1bJQpQF0
+
+Chocolate in bowl: American Heritage Chocolate, Unsplash (free Unsplash License)
+https://unsplash.com/photos/brown-chocolate-on-white-ceramic-bowl-RQ4TXxFaaZc
+Note: The second source is described as chocolate mousse, not confirmed
+buttercream. It visually shows a bowl of smooth chocolate mixture.
+
+HOW TO INSTALL
+1. Extract this ZIP on your iPad.
+2. Upload the .js.txt file to your GitHub repository root, commit to main.
+3. Open the uploaded .js.txt, copy the entire content using the Raw copy icon.
+4. Open the EXISTING recipe-updates.js in Edit mode.
+5. Paste this corrected Batch 12 block AT THE VERY END, after all earlier
+   batches, and commit to main. It overwrites the two recipe records by ID
+   without removing any previous recipes. Do NOT replace the whole file.
+6. Reload your live site. If an older Batch 12 was appended already, this
+   corrected block must come AFTER it so the real-photo URLs take precedence.
+
+If you require local JPG files in the ZIP or the exact previously chosen
+reference image, these URLs are not equivalent to that request.
