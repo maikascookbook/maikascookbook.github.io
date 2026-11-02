@@ -302,4 +302,84 @@ const session=(()=>{try{return JSON.parse(localStorage.getItem('maika_session'))
   setInterval(() => {
     if (!document.hidden && !token) loadPublicRecipes().catch(() => {});
   }, 60000);
+/* MAIKA'S COOKBOOK — GALLERY PHOTO UPLOAD
+   Paste immediately ABOVE the final })(); in app.js.
+   Existing photos, recipes, URL input and sync stay unchanged. */
+{
+  const photoInput = document.createElement('input');
+  photoInput.type = 'file';
+  photoInput.id = 'galleryPhoto';
+  photoInput.accept = 'image/*';
+  photoInput.style.cssText = 'display:block;width:100%;margin:9px 0 15px;';
+  const photoLabel = document.createElement('label');
+  photoLabel.textContent = 'Or choose a photograph from your gallery';
+  photoLabel.appendChild(photoInput);
+  const urlInput = $('#recipeForm').elements.image;
+  urlInput.closest('label').insertAdjacentElement('afterend', photoLabel);
+
+  // A new selection replaces the photo; no selection preserves the existing URL.
+  photoInput.addEventListener('change', () => {
+    if (photoInput.files[0]) urlInput.value = '';
+  });
+  $('#newBtn').addEventListener('click', () => { photoInput.value = ''; });
+  document.addEventListener('click', event => {
+    if (event.target.closest('[data-edit]')) photoInput.value = '';
+  }, true);
+
+  let uploadingPhoto = false;
+  $('#recipeForm').addEventListener('submit', async event => {
+    if (uploadingPhoto || !photoInput.files.length) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    if (!token || !userId) {
+      alert('Please sign in as the cookbook owner before uploading photos.');
+      return;
+    }
+    const file = photoInput.files[0];
+    if (!file.type.startsWith('image/')) {
+      alert('Please choose an image file.'); return;
+    }
+    const submit = $('#recipeForm').querySelector('[type="submit"]');
+    submit.disabled = true;
+    const originalLabel = submit.textContent;
+    submit.textContent = 'Uploading photograph…';
+    try {
+      // Convert iPhone/HEIC and large gallery images to lightweight JPEG.
+      const bitmap = await createImageBitmap(file);
+      const maxSide = 1800;
+      const scale = Math.min(1, maxSide / Math.max(bitmap.width, bitmap.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+      canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+      canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      bitmap.close?.();
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', .85));
+      if (!blob) throw Error('Could not prepare the selected photograph.');
+      if (blob.size > 10 * 1024 * 1024) throw Error('Photo is too large (maximum 10 MB).');
+      const cfg = config();
+      if (!cfg) throw Error('Supabase is not configured. Open Sync and sign in.');
+      const filename = userId + '/' + crypto.randomUUID() + '.jpg';
+      const response = await fetch(cfg.url + '/storage/v1/object/maika-recipe-images/' + filename, {
+        method: 'POST',
+        headers: {apikey: cfg.key, Authorization: 'Bearer ' + token, 'Content-Type':'image/jpeg', 'x-upsert':'false'},
+        body: blob
+      });
+      if (!response.ok) {
+        const detail = await response.text();
+        throw Error('Upload failed (' + response.status + '): ' + detail.slice(0, 200));
+      }
+      urlInput.value = cfg.url + '/storage/v1/object/public/maika-recipe-images/' + filename;
+      photoInput.value = '';
+      uploadingPhoto = true;
+      $('#recipeForm').requestSubmit();
+      uploadingPhoto = false;
+    } catch (error) {
+      uploadingPhoto = false;
+      alert('Photo was not uploaded. Your recipe has not been saved or changed.\n\n' + error.message);
+    } finally {
+      submit.disabled = false;
+      submit.textContent = originalLabel;
+    }
+  }, true);
+}
 }})();
