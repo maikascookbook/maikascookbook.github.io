@@ -39,5 +39,186 @@ document.addEventListener('click',async e=>{const t=e.target.closest('[data-page
 $('#homeBtn').onclick=()=>go('home');$('#newBtn').onclick=()=>openForm(null);$('#closeModal').onclick=closeForm;$('#cancelForm').onclick=closeForm;document.addEventListener('click',e=>{if(e.target.closest('#backRecipes'))go('library')});$('#syncBtn').onclick=()=>{$('#syncModal').classList.remove('hidden');const c=config();if(c){$('#sbUrl').value=c.url;$('#sbKey').value=c.key;$('#sbEmail').value=c.email||''}};$('#closeSync').onclick=()=>$('#syncModal').classList.add('hidden');$('#signupBtn').onclick=()=>auth(true);$('#syncForm').onsubmit=e=>{e.preventDefault();auth(false)};
 $('#recipeForm').onsubmit=async e=>{e.preventDefault();const f=e.target,r=editing?recipes.find(x=>x.id===editing):{id:crypto.randomUUID()};for(const k of ['title','category','time','servings','description','notes','image'])r[k]=f.elements[k].value.trim();r.ingredients=f.elements.ingredients.value.split('\n').map(s=>s.trim()).filter(Boolean);r.method=f.elements.method.value.split('\n').map(s=>s.trim()).filter(Boolean);if(!editing)recipes.unshift(r);closeForm();await persist(r);go(r.id)};
 document.addEventListener('input',e=>{if(e.target.id==='searchRecipes'){search=e.target.value;const pos=e.target.selectionStart;render();const input=$('#searchRecipes');input.focus();input.setSelectionRange(pos,pos)}});$('#exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify(recipes,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='maikas-cookbook-backup.json';a.click();URL.revokeObjectURL(a.href)};$('#importFile').onchange=async e=>{try{const file=e.target.files[0];if(!file)return;const parsed=JSON.parse(await file.text());if(!Array.isArray(parsed))throw Error('Not a recipe list');recipes=parsed;save();render();alert('Backup imported successfully')}catch(err){alert('Could not import: '+err.message)}};
+/* MAIKA'S COOKBOOK — CLOUD SYNC SAFETY FIX
+   Paste immediately BEFORE the existing line beginning "const session=" in app.js.
+   Keep the rest of app.js unchanged. */
+{
+  let refreshToken = null, expiresAt = 0, busy = false;
+  const dirty = () => { try { return JSON.parse(localStorage.getItem('maika_dirty') || '[]'); } catch { return []; } };
+  const removed = () => { try { return JSON.parse(localStorage.getItem('maika_deleted') || '[]'); } catch { return []; } };
+  const setDirty = ids => localStorage.setItem('maika_dirty', JSON.stringify([...new Set(ids)]));
+  const setRemoved = ids => localStorage.setItem('maika_deleted', JSON.stringify([...new Set(ids)]));
+  const remoteId = id => id.startsWith('seed-') ? userId + '-' + id : id;
+  const localId = id => userId && id.startsWith(userId + '-seed-') ? id.slice(userId.length + 1) : id;
+  function setSession(data) {
+    token = data.access_token;
+    userId = data.user?.id || userId;
+    refreshToken = data.refresh_token || refreshToken;
+    expiresAt = Date.now() + (Number(data.expires_in) || 3600) * 1000;
+    localStorage.setItem('maika_session', JSON.stringify({token, userId, refreshToken, expiresAt}));
+  }
+  async function renew() {
+    const cfg = config();
+    if (!refreshToken || !cfg) throw Error('Session expired. Please sign in again.');
+    const response = await fetch(cfg.url + '/auth/v1/token?grant_type=refresh_token', {
+      method:'POST', headers:{apikey:cfg.key,'Content-Type':'application/json'},
+      body:JSON.stringify({refresh_token:refreshToken})
+    });
+    const data = await response.json();
+    if (!response.ok || !data.access_token) throw Error('Session expired. Please sign in again.');
+    setSession(data);
+  }
+  async function request(path, opts={}) {
+    const cfg = config();
+    if (!cfg || !token) throw Error('Not connected');
+    if (expiresAt && Date.now() > expiresAt - 60000) await renew();
+    const call = () => fetch(cfg.url + path, {
+      ...opts, headers:{apikey:cfg.key, Authorization:'Bearer '+token, ...opts.headers}
+    });
+    let response = await call();
+    if (response.status === 401 && refreshToken) { await renew(); response = await call(); }
+    if (!response.ok) throw Error((await response.text()).slice(0,400));
+    return response;
+  }
+  function asRow(r) {
+    return {
+      id:remoteId(r.id), user_id:userId, title:r.title || '', category:r.category || '',
+      time:r.time || '', servings:r.servings || '', description:r.description || '',
+      ingredients:r.ingredients || [], method:r.method || [],
+      notes:r.notes || '', image:r.image || '', updated_at:new Date().toISOString()
+    };
+  }
+  async function upload(r) {
+    await request('/rest/v1/recipes', {
+      method:'POST', headers:{'Content-Type':'application/json',Prefer:'resolution=merge-duplicates'},
+      body:JSON.stringify(asRow(r))
+    });
+    setDirty(dirty().filter(id => id !== r.id));
+  }
+  async function uploadDeletes() {
+    for (const id of removed()) {
+      await request('/rest/v1/recipes?id=eq.' + encodeURIComponent(remoteId(id)), {method:'DELETE'});
+      setRemoved(removed().filter(x => x !== id));
+    }
+  }
+  persist = async function(r) {
+    setDirty([...dirty(),r.id]);
+    save();
+    if (!token) return;
+    try { await upload(r); $('#syncBtn').innerHTML='✓ <span>Synced</span>'; }
+    catch (e) {
+      $('#syncBtn').innerHTML='☁ <span>Sync pending</span>';
+      console.warn('Saved locally, cloud sync pending:', e);
+    }
+  };
+  cloudFetch = async function() {
+    if (busy || !token) return;
+    busy = true;
+    try {
+      const savedSession = JSON.parse(localStorage.getItem('maika_session') || 'null');
+      if (savedSession) {
+        refreshToken = savedSession.refreshToken || refreshToken;
+        expiresAt = savedSession.expiresAt || expiresAt;
+      }
+      const response = await request('/rest/v1/recipes?select=*');
+      const rows = await response.json();
+      if (rows.length === 0) {
+        // First connection: protect the finished iPad recipes by uploading them first.
+        await uploadDeletes();
+        for (const r of recipes) await upload(r);
+      } else {
+        // Other devices: cloud is authoritative, except locally edited recipes pending upload.
+        const pending = new Set(dirty()), tombstones = new Set(removed());
+        const local = new Map(recipes.map(r => [r.id,r]));
+        const remote = new Map(rows.map(row => {
+          const id = localId(row.id);
+          return [id,{
+            id,title:row.title,category:row.category,time:row.time,
+            servings:row.servings,description:row.description,
+            ingredients:row.ingredients || [],method:row.method || [],
+            notes:row.notes || '',image:row.image || '',
+            seed:id.startsWith('seed-')
+          }];
+        }));
+        const merged = [];
+        for (const [id,r] of remote) {
+          if (!tombstones.has(id)) merged.push(pending.has(id) && local.has(id) ? local.get(id) : r);
+        }
+        for (const r of recipes) {
+          if (!remote.has(r.id) && !tombstones.has(r.id) &&
+              (pending.has(r.id) || !r.id.startsWith('seed-'))) merged.push(r);
+        }
+        recipes = merged;
+        save();
+        render();
+        await uploadDeletes();
+        for (const r of recipes) {
+          if (pending.has(r.id) || (!remote.has(r.id) && !r.id.startsWith('seed-'))) await upload(r);
+        }
+      }
+      $('#syncBtn').innerHTML='✓ <span>Synced</span>';
+    } catch(e) {
+      $('#syncBtn').innerHTML='☁ <span>Sync pending</span>';
+      console.warn('Sync will retry:',e);
+      throw e;
+    } finally { busy = false; }
+  };
+  auth = async function(signup) {
+    const url=$('#sbUrl').value.trim().replace(/\/$/,''),
+      key=$('#sbKey').value.trim(), email=$('#sbEmail').value.trim(),
+      password=$('#sbPassword').value;
+    if (!url || !key || !email || !password) {
+      $('#syncMessage').textContent='Complete all fields first.'; return;
+    }
+    localStorage.setItem('maika_supabase',JSON.stringify({url,key,email}));
+    $('#syncMessage').textContent='Connecting…';
+    try {
+      const response=await fetch(url+'/auth/v1/'+(signup?'signup':'token?grant_type=password'),{
+        method:'POST',headers:{apikey:key,'Content-Type':'application/json'},
+        body:JSON.stringify({email,password})
+      });
+      const data=await response.json();
+      if(!response.ok) throw Error(data.msg||data.error_description||data.message||'Login failed');
+      if(!data.access_token){
+        $('#syncMessage').textContent='Account created. Confirm your email, then use Sign in & sync.';
+        return;
+      }
+      setSession(data);
+      await cloudFetch();
+      $('#syncMessage').textContent='Connected! Your cookbook is synchronized.';
+      $('#sbPassword').value='';
+    }catch(e){$('#syncMessage').textContent='Connection failed: '+e.message;}
+  };
+  // A deleted custom recipe must also be removed from the cloud.
+  document.addEventListener('click', e => {
+    const button=e.target.closest('[data-delete]');
+    if (!button) return;
+    const id=button.dataset.delete;
+    // The existing handler asks for confirmation; record deletion after it completes.
+    queueMicrotask(() => {
+      if (!recipes.some(r => r.id === id)) {
+        setRemoved([...removed(),id]);
+        setDirty(dirty().filter(x => x !== id));
+        if(token) cloudFetch().catch(()=>{});
+      }
+    });
+  }, true);
+  // Imported backups should be treated as local edits and uploaded.
+  const oldImport=$('#importFile').onchange;
+  $('#importFile').onchange=async e => {
+    await oldImport(e);
+    setDirty([...dirty(),...recipes.map(r => r.id)]);
+    if(token) cloudFetch().catch(()=>{});
+  };
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && token) cloudFetch().catch(()=>{});
+  });
+  window.addEventListener('focus', () => {
+    if (token) cloudFetch().catch(()=>{});
+  });
+  setInterval(() => {
+    if (token && !document.hidden) cloudFetch().catch(()=>{});
+  },60000);
+}
 const session=(()=>{try{return JSON.parse(localStorage.getItem('maika_session'))}catch{return null}})();if(session){token=session.token;userId=session.userId;cloudFetch().catch(()=>{$('#syncBtn').innerHTML='☁ <span>Sync</span>'})}save();render();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 })();
