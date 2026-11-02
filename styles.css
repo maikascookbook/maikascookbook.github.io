@@ -139,3 +139,70 @@ main{min-width:0}
 @media (max-width: 650px) {
   .recipe-top .recipe-photo { aspect-ratio: 4 / 3; }
 }
+/* Maika's Cookbook — full-width recipe photo + balanced ingredients.
+   Append to the END of styles.css, after previous photo layout updates.
+   This overrides the old two-column recipe header on all screen sizes. */
+.recipe-page .recipe-top {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+}
+.recipe-page .recipe-top > * { min-width: 0; }
+.recipe-page .recipe-top .recipe-photo {
+  order: -1;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: 600px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+}
+.recipe-page .recipe-top .ingredients {
+  order: 0;
+  width: 100%;
+  min-height: 0;
+  padding: clamp(22px, 4vw, 44px);
+  border-radius: 12px;
+}
+.recipe-page .ingredients ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(18px, 3vw, 48px);
+  row-gap: 0;
+  padding: 0;
+  margin: 20px 0 0;
+  list-style: none;
+}
+.recipe-page .ingredients li {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  padding: 12px 0;
+  border-bottom: 1px solid #ded4c9;
+  line-height: 1.55;
+}
+.recipe-page .recipe-main { margin-top: 48px; }
+@media (max-width: 850px) {
+  .recipe-page .ingredients ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 22px;
+  }
+  .recipe-page .recipe-top .recipe-photo {
+    max-height: 490px;
+    aspect-ratio: 16 / 10;
+  }
+}
+@media (max-width: 480px) {
+  .recipe-page .ingredients ul { grid-template-columns: 1fr; }
+  .recipe-page .recipe-top .recipe-photo {
+    max-height: none;
+    aspect-ratio: 4 / 3;
+  }
+  .recipe-page .recipe-top { gap: 16px; }
+  .recipe-page .recipe-top .ingredients { padding: 22px; }
+  .recipe-page .recipe-main { margin-top: 38px; }
+}
