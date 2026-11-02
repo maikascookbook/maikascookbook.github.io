@@ -1,36 +1,39 @@
-MAIKA'S COOKBOOK — BATCH 9
-Vanilla Cupcakes with Swiss Meringue Buttercream
-Moist Chocolate Cupcakes with Chocolate Buttercream
+MAIKA'S COOKBOOK — BATCH 10
+Garlic & Herb Parmesan Mashed Potatoes + Creamy Mushroom Parmesan Risotto
 
-CONTENTS
-- vanilla-cupcakes-batch9.jpg
-- chocolate-cupcakes-batch9.jpg
-- ADD-TO-END-of-recipe-updates-BATCH9.js.txt
+PACKAGE FILES
+- garlic-parmesan-mashed-potatoes-batch10.jpg
+- mushroom-parmesan-risotto-batch10.jpg
+- ADD-TO-END-of-recipe-updates-BATCH10.js.txt
 - READ-ME-FIRST.txt
 
-The two photographs are newly generated editorial interpretations inspired
-by your selected reference photographs, not the original website images.
-Each is a 768 x 1024 crop of the side-by-side image generated in chat.
-No artificial upscaling was used; they may look softer in full-width display.
+The two food images are generated editorial interpretations of the approved
+visual direction, not copies of external reference photographs. Each is
+768 × 1024 pixels, cropped from the approved two-panel composition, without
+artificial upscaling. They may look softer at full-screen website width.
 
-STEP 1: UPLOAD
-Extract ZIP in Files on iPad. In the GitHub repository root:
-Add file > Upload files > upload all four files > commit to main.
+STEP 1 — UPLOAD
+Extract the ZIP in your iPad Files app. Open the root of your GitHub
+repository maikascookbook/maikascookbook.github.io.
+Choose Add file > Upload files, upload all four files and commit to main.
 
-STEP 2: APPEND UPDATE CODE
-Open ADD-TO-END-of-recipe-updates-BATCH9.js.txt in GitHub.
-Tap the copy icon beside Raw to copy the entire contents.
-Open the EXISTING recipe-updates.js, tap the pencil/Edit icon.
-Scroll to the very bottom, after the final })(); of Batch 8.
-Press Return, paste the complete Batch 9 block and commit to main.
-NEVER replace the existing recipe-updates.js or remove previous batches.
+STEP 2 — APPEND THE RECIPES
+Open ADD-TO-END-of-recipe-updates-BATCH10.js.txt in GitHub.
+Tap the copy icon next to Raw.
+Open your EXISTING recipe-updates.js and tap the pencil/Edit button.
+Scroll to the very end, AFTER the final })(); of Batch 9.
+Press Return, paste the complete Batch 10 code, and commit to main.
+DO NOT delete or overwrite the earlier code.
 
-STEP 3: VERIFY
-Refresh https://maikascookbook.github.io/ and open both cupcake recipes.
-The full-width image / ingredient columns / method layout stays unchanged.
-No CSS edits required.
+STEP 3 — CHECK
+Refresh https://maikascookbook.github.io/ and inspect both recipes.
+Your full-width photo, ingredient columns and method layout stay unchanged.
+No CSS changes are needed.
 
-You may delete the temporary .txt files from GitHub after verifying the site.
-Keep both JPGs and the updated recipe-updates.js.
+IMPORTANT: If the site still shows old versions after the commit, the issue
+may involve browser cache, localStorage, or cloud synchronization. Check
+the deployed site separately; uploading code alone does not prove it is live.
 
-Recipe IDs: seed-4 and seed-5.
+After confirming everything works, you may remove the temporary .txt files.
+Keep the two JPGs and recipe-updates.js.
+Recipe IDs: seed-15 and seed-16.
