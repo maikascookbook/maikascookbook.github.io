@@ -5,7 +5,7 @@
   const updates = [
   {
     "id": "seed-21",
-    "image": "chicken-alfredo.jpg"
+    "image": "chicken-alfredo.jpg",
     "title": "Creamy Garlic Chicken Alfredo",
     "category": "Pasta & Rice",
     "time": "35 min",
@@ -37,7 +37,7 @@
   },
   {
     "id": "seed-22",
-    "image": "tomato-shrimp-pasta.jpg"
+    "image": "tomato-shrimp-pasta.jpg",
     "title": "Garlic Butter Tomato Shrimp Pasta",
     "category": "Pasta & Rice",
     "time": "35–40 min",
