@@ -1,37 +1,35 @@
-MAIKA’S COOKBOOK — BATCH 7
-==========================
-Recipes:
-1. Rich Vanilla Butter Cake with Swiss Meringue Buttercream (seed-2)
-2. Toddy Tres Leches Cake (seed-9)
+MAIKA'S COOKBOOK — BATCH 8
+Apple Tarte Tatin + Molten Chocolate Fondants
 
 FILES
-- vanilla-swiss-meringue-cake-batch7.jpg
-- toddy-tres-leches-batch7.jpg
-- ADD-TO-END-of-recipe-updates-BATCH7.js.txt
+- apple-tarte-tatin-batch8.jpg
+- molten-chocolate-fondants-batch8.jpg
+- ADD-TO-END-of-recipe-updates-BATCH8.js.txt
 - READ-ME-FIRST.txt
 
-PHOTOS
-These are the EXACT left and right halves of the side-by-side AI editorial
-concept approved in chat. They are inspired by the user's actual homemade
-photos, but are AI interpretations, not direct retouches. Each is 768 × 1024
-native pixels. They may look a little softer when expanded into the site's
-full-width photo layout. No artificial upscaling has been applied.
+IMAGES
+These are the two separate images from the newly generated editorial concept
+in chat, inspired by your chosen visual references. They are NOT the original
+web photographs. Both have native dimensions 768 × 1024 px, cropped from the
+approved two-panel concept; no artificial upscaling has been applied.
 
-UPLOAD TO GITHUB (iPad)
-1. Extract this ZIP in Files.
-2. Open github.com/maikascookbook/maikascookbook.github.io
-3. Add file > Upload files, select all four files, commit to main.
+STEP 1 — UPLOAD
+Extract the ZIP on your iPad. In your GitHub repository root, use
+Add file > Upload files. Upload all four files and commit to main.
 
-APPEND THE RECIPES — DO NOT REPLACE OLD CODE
-4. Open ADD-TO-END-of-recipe-updates-BATCH7.js.txt on GitHub.
-5. Use the copy icon beside Raw to copy the ENTIRE file.
-6. Open the EXISTING recipe-updates.js > pencil/Edit.
-7. Scroll to the very bottom, after the last })(); from Batch 6.
-8. Add a newline, paste all Batch 7 code, and commit to main.
+STEP 2 — APPEND THE RECIPE UPDATE
+Open ADD-TO-END-of-recipe-updates-BATCH8.js.txt in GitHub.
+Use the copy icon next to Raw to copy all code.
+Open the EXISTING recipe-updates.js and tap Edit.
+Scroll to the bottom, AFTER the last })(); from Batch 7.
+Press Return, paste the new Batch 8 block and commit to main.
+DO NOT replace the file or delete earlier code.
 
-VERIFY
-9. Refresh https://maikascookbook.github.io/ and inspect both recipes.
-10. Both photos should appear above ingredients, with the existing layout intact.
+STEP 3 — VERIFY
+Refresh https://maikascookbook.github.io/ and check both recipes.
+The existing full-width photo / ingredient grid / method layout is unchanged.
+You can remove the temporary .txt files after confirming everything works.
+Keep both JPGs and recipe-updates.js.
 
-No CSS changes are necessary. After checking, the temporary .txt files may be
-deleted from GitHub; keep the two JPGs and updated recipe-updates.js.
+Recipe IDs: seed-10 (Apple Tarte Tatin), seed-11 (Molten Chocolate Fondants).
+No CSS changes required.

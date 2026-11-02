@@ -1,0 +1,109 @@
+/* Maika's Cookbook — Batch 8: Apple Tarte Tatin + Molten Chocolate Fondants.
+   APPEND this entire block to the END of your existing recipe-updates.js.
+   Do not replace or delete the code from Batches 1–7. */
+(() => {
+  'use strict';
+  const updates = [
+  {
+    "id": "seed-10",
+    "title": "Caramelized Apple Tarte Tatin",
+    "category": "Desserts & Baking",
+    "time": "25–30 min prep + 30–35 min baking",
+    "servings": "6–8 slices · 23–24 cm tart",
+    "description": "A classic French upside-down apple tart with glossy amber caramel, tender apples and a golden, buttery shortcrust pastry.",
+    "image": "apple-tarte-tatin-batch8.jpg",
+    "seed": true,
+    "ingredients": [
+      "CARAMELIZED APPLES — 6–7 medium firm apples (Pink Lady, Braeburn or Granny Smith)",
+      "150 g granulated sugar",
+      "75 g unsalted butter, cold and cubed",
+      "1 tsp vanilla extract (optional)",
+      "Small pinch of salt",
+      "PASTRY — 1 sheet all-butter shortcrust pastry (approximately 230–280 g)",
+      "A little flour for rolling, if needed"
+    ],
+    "method": [
+      "Preheat the oven to 180°C conventional heat. Prepare a 23–24 cm ovenproof frying pan or tarte Tatin dish.",
+      "Peel the apples, cut them into halves or large quarters and remove the cores. Keep the pieces fairly large so they retain their shape.",
+      "Roll the shortcrust pastry into a circle slightly larger than the pan. Refrigerate the pastry while preparing the caramel.",
+      "Scatter the sugar evenly over the base of the pan. Heat over medium heat until it begins to melt, without vigorous stirring.",
+      "Continue heating until the sugar becomes a deep golden-amber caramel. Watch closely, because it can change from golden to burnt in seconds.",
+      "Reduce the heat and add the cold butter in several additions, stirring carefully until incorporated. The caramel may bubble and splatter.",
+      "Stir in the pinch of salt and optional vanilla extract.",
+      "Arrange the apples tightly in the caramel, with the rounded sides facing down. Pack them closely because they will shrink as they cook.",
+      "Cook the apples over medium-low heat for approximately 10–15 minutes, until they begin to soften and release some juices.",
+      "Remove the pan from the heat and allow the bubbling caramel to settle briefly.",
+      "Lay the chilled pastry over the apples. Carefully tuck the edges down inside the pan and cut a small steam vent in the centre.",
+      "Bake for approximately 30–35 minutes, until the pastry is thoroughly cooked and deeply golden.",
+      "Remove from the oven and rest for 5–10 minutes. The caramel should settle but remain fluid enough to release from the pan.",
+      "Wearing oven gloves, place a large serving plate over the pan and invert the tart carefully in one confident movement. Beware of hot caramel.",
+      "Serve warm, plain or with vanilla ice cream or lightly whipped cream."
+    ],
+    "notes": "The original apple and pastry quantities were not recovered; the amounts above are practical estimates for a 23–24 cm tart. Your first caramel burned, so watch it closely and avoid overcooking. Bake the pastry until properly golden, and invert while the caramel is still fluid."
+  },
+  {
+    "id": "seed-11",
+    "title": "Molten Chocolate Fondants",
+    "category": "Desserts & Baking",
+    "time": "15 min prep + 15–20 min chilling + approximately 11 min baking",
+    "servings": "2 large fondants · approximately 10 cm ramekins",
+    "description": "Individual dark chocolate cakes with delicate baked exteriors and rich, warm molten chocolate centres that flow onto the plate when cut.",
+    "image": "molten-chocolate-fondants-batch8.jpg",
+    "seed": true,
+    "ingredients": [
+      "100 g good-quality dark chocolate (60–70% cocoa)",
+      "90 g unsalted butter",
+      "2 large eggs",
+      "55 g granulated sugar",
+      "25 g all-purpose flour",
+      "1 tsp vanilla extract",
+      "Small pinch of salt",
+      "Extra softened butter and flour for preparing the ramekins"
+    ],
+    "method": [
+      "Grease two large oven-safe ramekins, approximately 10 cm in diameter, thoroughly with softened butter, covering the bottoms and sides.",
+      "Dust the inside of each ramekin with flour. Rotate to coat evenly, then tap out any excess.",
+      "Chop the dark chocolate into small pieces and place in a heatproof bowl with the butter.",
+      "Melt the chocolate and butter gently over barely simmering water, stirring until smooth. Alternatively, microwave in short bursts, stirring between each.",
+      "Remove from the heat and cool slightly. The chocolate mixture should remain fluid but not be hot.",
+      "In a separate bowl, whisk the eggs and sugar until well combined, slightly thickened and a little lighter in colour.",
+      "Gradually pour the warm chocolate mixture into the egg mixture while whisking gently.",
+      "Mix in the vanilla extract and pinch of salt.",
+      "Sift in the flour and fold gently with a spatula just until no dry flour remains.",
+      "Divide the batter evenly between the two prepared ramekins.",
+      "Refrigerate for approximately 15–20 minutes to firm the batter slightly.",
+      "Meanwhile, preheat the oven to 200°C conventional heat, or 190°C fan.",
+      "Set the ramekins on a baking tray and bake for approximately 11 minutes. The edges should look set while the centres still wobble slightly. Timing varies with the oven and ramekin size.",
+      "Remove from the oven and allow to rest for approximately 1–2 minutes.",
+      "Run a thin knife carefully around the edges, place a dessert plate over each ramekin and invert gently.",
+      "Lift the ramekins away and serve immediately, while the centres are warm and molten."
+    ],
+    "notes": "This preserves your original recipe without cocoa powder. Eleven minutes is a starting point rather than a guaranteed bake time; testing one fondant first is worthwhile because even 1–2 minutes can change the centre from molten to set."
+  }
+];
+  const byId = new Map(updates.map(recipe => [recipe.id, recipe]));
+  function merge(items) {
+    if (!Array.isArray(items)) return items;
+    const result = items.map(recipe =>
+      byId.has(recipe.id) ? { ...recipe, ...byId.get(recipe.id) } : recipe
+    );
+    for (const update of updates) {
+      if (!result.some(recipe => recipe.id === update.id)) result.push({ ...update });
+    }
+    return result;
+  }
+  if (Array.isArray(window.SEED_RECIPES)) {
+    window.SEED_RECIPES = merge(window.SEED_RECIPES);
+  }
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (Array.isArray(saved)) {
+        localStorage.setItem('maika_recipes', JSON.stringify(merge(saved)));
+      }
+    }
+  } catch (error) {
+    console.warn('Batch 8 recipe storage update:', error);
+  }
+})();
