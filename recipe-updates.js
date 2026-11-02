@@ -1382,3 +1382,105 @@
     console.warn('Batch 12 recipe storage update:', error);
   }
 })();
+/* Maika's Cookbook — Batch 13: Swiss Meringue Buttercream + Homemade Garlic Butter Bread.
+   APPEND this entire block to the END of your existing recipe-updates.js.
+   Do NOT replace the file or remove earlier batches. */
+(() => {
+  'use strict';
+  const updates = [
+  {
+    "id": "seed-6",
+    "title": "Silky Vanilla Swiss Meringue Buttercream",
+    "category": "Desserts & Baking",
+    "time": "25–35 min",
+    "servings": "Approximately 500 g",
+    "description": "A delicate, silky vanilla buttercream made with Swiss meringue and softened butter, with a smooth texture and balanced sweetness.",
+    "image": "silky-vanilla-swiss-meringue-buttercream-batch13.jpg",
+    "seed": true,
+    "ingredients": [
+      "3 large egg whites (approximately 90–100 g)",
+      "180 g granulated sugar",
+      "225 g unsalted butter, softened but still cool",
+      "2 tsp vanilla extract",
+      "A small pinch of salt (optional)"
+    ],
+    "method": [
+      "Prepare your equipment. Thoroughly clean and dry your KitchenAid mixing bowl and whisk attachment. Any grease can interfere with the egg whites whipping properly.",
+      "Prepare a bain-marie. Fill a saucepan with a few centimetres of water and bring it to a gentle simmer.",
+      "Combine the egg whites and sugar. Place both in a heatproof bowl and whisk gently to combine.",
+      "Heat the mixture. Set the bowl over the simmering water, ensuring its base does not touch the water. Whisk continuously until the sugar dissolves and the mixture reaches approximately 71°C.",
+      "Check the sugar. Rub a tiny amount of the mixture between your fingers once safe to touch. It should feel smooth rather than grainy. Use a thermometer to verify the temperature.",
+      "Whip the meringue. Transfer the heated mixture to the KitchenAid bowl. Whisk on medium-high speed until thick, glossy and forming firm peaks.",
+      "Cool completely. Continue whipping until the outside of the bowl feels close to room temperature, approximately 10–15 minutes.",
+      "Change attachments. Replace the whisk with the paddle attachment for a smoother final buttercream.",
+      "Add the butter gradually. With the mixer on medium-low speed, add the softened butter one small cube at a time, allowing each addition to incorporate.",
+      "Continue mixing. The buttercream may briefly look soupy or curdled. This is common; continue mixing until it becomes thick and smooth.",
+      "Add the vanilla. Mix in the vanilla extract and optional pinch of salt.",
+      "Refine the texture. Beat on low speed for 2–3 minutes to remove excess air bubbles and achieve a silky finish.",
+      "Adjust if necessary. If too soft, refrigerate for 10–15 minutes and beat again. If curdled because it is too cold, gently warm a small portion, return it to the bowl and mix.",
+      "Use or store. Frost your cake immediately, or refrigerate in an airtight container and bring toward room temperature before rewhipping."
+    ],
+    "notes": "Temperature is crucial: cool the whipped meringue before adding butter, or the frosting can become soupy. This batch may make more frosting than needed for a small cake. The image was cropped from the exact user-selected screenshot of Once Upon a Chef."
+  },
+  {
+    "id": "seed-26",
+    "title": "Homemade Garlic Butter Bread",
+    "category": "Sides & Sauces",
+    "time": "10 min preparation + 10–15 min baking",
+    "servings": "4–6",
+    "description": "Golden, crispy garlic bread with a soft buttery centre, fresh garlic and parsley, perfect alongside pasta or soup.",
+    "image": "homemade-garlic-butter-bread-batch13.jpg",
+    "seed": true,
+    "ingredients": [
+      "1 large baguette or Italian-style loaf (approximately 300–400 g)",
+      "100 g unsalted butter, softened",
+      "4–5 garlic cloves, finely minced or grated",
+      "2 tbsp fresh parsley, finely chopped",
+      "¼ tsp fine salt, or to taste",
+      "Freshly ground black pepper, to taste",
+      "25 g freshly grated Parmesan (optional)"
+    ],
+    "method": [
+      "Preheat the oven to 200°C conventional heat and line a baking tray with parchment paper.",
+      "Prepare the bread. Slice the baguette in half lengthwise for two large pieces, or cut into thick diagonal slices for individual portions.",
+      "Soften the butter until it is spreadable but not melted.",
+      "Prepare the garlic. Peel and finely grate or mince the cloves to distribute their flavour evenly.",
+      "Make the garlic butter. Combine softened butter, garlic, chopped parsley, salt and black pepper in a small bowl.",
+      "Mix thoroughly until the garlic and herbs are evenly incorporated.",
+      "Spread generously over the cut surfaces of the bread, including the edges.",
+      "If desired, sprinkle a little freshly grated Parmesan over the buttered bread.",
+      "Arrange the bread cut-side up on the prepared baking tray.",
+      "Bake for approximately 10–15 minutes until the butter is bubbling and the edges are turning golden.",
+      "For a crispier top, finish under the grill for 1–2 minutes, watching closely to prevent burning.",
+      "Remove from the oven and allow to rest for 1–2 minutes.",
+      "Slice into serving portions, add a little extra parsley if desired and serve warm."
+    ],
+    "notes": "This is a proposed, untested reconstruction because the original homemade garlic bread method and quantities were not recorded. Bake uncovered for crispier bread; loosely cover with foil during most of baking for softer bread. The image was cropped from the exact user-selected screenshot of AkcniCeny.cz."
+  }
+];
+  const byId = new Map(updates.map(recipe => [recipe.id, recipe]));
+  function merge(items) {
+    if (!Array.isArray(items)) return items;
+    const merged = items.map(recipe =>
+      byId.has(recipe.id) ? { ...recipe, ...byId.get(recipe.id) } : recipe
+    );
+    for (const recipe of updates) {
+      if (!merged.some(item => item.id === recipe.id)) merged.push({ ...recipe });
+    }
+    return merged;
+  }
+  if (Array.isArray(window.SEED_RECIPES)) {
+    window.SEED_RECIPES = merge(window.SEED_RECIPES);
+  }
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (Array.isArray(saved)) {
+        localStorage.setItem('maika_recipes', JSON.stringify(merge(saved)));
+      }
+    }
+  } catch (error) {
+    console.warn('Batch 13 recipe storage update:', error);
+  }
+})();
