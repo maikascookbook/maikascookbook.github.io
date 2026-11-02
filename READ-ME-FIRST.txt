@@ -1,35 +1,36 @@
-MAIKA'S COOKBOOK — BATCH 8
-Apple Tarte Tatin + Molten Chocolate Fondants
+MAIKA'S COOKBOOK — BATCH 9
+Vanilla Cupcakes with Swiss Meringue Buttercream
+Moist Chocolate Cupcakes with Chocolate Buttercream
 
-FILES
-- apple-tarte-tatin-batch8.jpg
-- molten-chocolate-fondants-batch8.jpg
-- ADD-TO-END-of-recipe-updates-BATCH8.js.txt
+CONTENTS
+- vanilla-cupcakes-batch9.jpg
+- chocolate-cupcakes-batch9.jpg
+- ADD-TO-END-of-recipe-updates-BATCH9.js.txt
 - READ-ME-FIRST.txt
 
-IMAGES
-These are the two separate images from the newly generated editorial concept
-in chat, inspired by your chosen visual references. They are NOT the original
-web photographs. Both have native dimensions 768 × 1024 px, cropped from the
-approved two-panel concept; no artificial upscaling has been applied.
+The two photographs are newly generated editorial interpretations inspired
+by your selected reference photographs, not the original website images.
+Each is a 768 x 1024 crop of the side-by-side image generated in chat.
+No artificial upscaling was used; they may look softer in full-width display.
 
-STEP 1 — UPLOAD
-Extract the ZIP on your iPad. In your GitHub repository root, use
-Add file > Upload files. Upload all four files and commit to main.
+STEP 1: UPLOAD
+Extract ZIP in Files on iPad. In the GitHub repository root:
+Add file > Upload files > upload all four files > commit to main.
 
-STEP 2 — APPEND THE RECIPE UPDATE
-Open ADD-TO-END-of-recipe-updates-BATCH8.js.txt in GitHub.
-Use the copy icon next to Raw to copy all code.
-Open the EXISTING recipe-updates.js and tap Edit.
-Scroll to the bottom, AFTER the last })(); from Batch 7.
-Press Return, paste the new Batch 8 block and commit to main.
-DO NOT replace the file or delete earlier code.
+STEP 2: APPEND UPDATE CODE
+Open ADD-TO-END-of-recipe-updates-BATCH9.js.txt in GitHub.
+Tap the copy icon beside Raw to copy the entire contents.
+Open the EXISTING recipe-updates.js, tap the pencil/Edit icon.
+Scroll to the very bottom, after the final })(); of Batch 8.
+Press Return, paste the complete Batch 9 block and commit to main.
+NEVER replace the existing recipe-updates.js or remove previous batches.
 
-STEP 3 — VERIFY
-Refresh https://maikascookbook.github.io/ and check both recipes.
-The existing full-width photo / ingredient grid / method layout is unchanged.
-You can remove the temporary .txt files after confirming everything works.
-Keep both JPGs and recipe-updates.js.
+STEP 3: VERIFY
+Refresh https://maikascookbook.github.io/ and open both cupcake recipes.
+The full-width image / ingredient columns / method layout stays unchanged.
+No CSS edits required.
 
-Recipe IDs: seed-10 (Apple Tarte Tatin), seed-11 (Molten Chocolate Fondants).
-No CSS changes required.
+You may delete the temporary .txt files from GitHub after verifying the site.
+Keep both JPGs and the updated recipe-updates.js.
+
+Recipe IDs: seed-4 and seed-5.
