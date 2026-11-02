@@ -221,4 +221,85 @@ document.addEventListener('input',e=>{if(e.target.id==='searchRecipes'){search=e
   },60000);
 }
 const session=(()=>{try{return JSON.parse(localStorage.getItem('maika_session'))}catch{return null}})();if(session){token=session.token;userId=session.userId;cloudFetch().catch(()=>{$('#syncBtn').innerHTML='☁ <span>Sync</span>'})}save();render();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-})();
+/* MAIKA'S COOKBOOK — PUBLIC READ-ONLY LIVE RECIPES
+   Paste immediately ABOVE the final line: })();
+   Do not delete or replace any existing code. */
+{
+  // This is the PUBLIC Supabase URL and PUBLISHABLE key, never a secret key.
+  const publicCloud = {
+    url: 'https://kljecbncitigmvkryaru.supabase.co',
+    key: 'sb_publishable_NrCzJAReSfmBb8ojTtWYWw_PUrZuM3Q'
+  };
+
+  // Preserve the existing editor and sync behavior for the signed-in owner.
+  const previousRender = render;
+  render = function () {
+    previousRender();
+    if (!token) {
+      $('#newBtn').style.display = 'none';
+      document.querySelectorAll('[data-edit], [data-delete]').forEach(button => button.remove());
+      $('#syncBtn').innerHTML = '☁ <span>Owner sign in</span>';
+    } else {
+      $('#newBtn').style.display = '';
+    }
+  };
+
+  // Visitors cannot invoke editing even if they manipulate the page's HTML.
+  document.addEventListener('click', event => {
+    if (!token && event.target.closest('#newBtn, [data-edit], [data-delete]')) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  }, true);
+
+  async function loadPublicRecipes() {
+    if (token) return;
+    const response = await fetch(
+      publicCloud.url + '/rest/v1/recipes?select=*&order=updated_at.desc',
+      { headers: { apikey: publicCloud.key } }
+    );
+    if (!response.ok) throw new Error('Public recipe load failed: HTTP ' + response.status);
+    const rows = await response.json();
+    if (!Array.isArray(rows)) throw new Error('Unexpected recipe response');
+
+    // Guest data lives only in memory; never overwrite the owner's local backups.
+    recipes = rows.map(row => {
+      const id = String(row.id).replace(/^[0-9a-f-]{36}-(seed-)/i, '$1');
+      return {
+        id,
+        title: row.title || '',
+        category: row.category || '',
+        time: row.time || '',
+        servings: row.servings || '',
+        description: row.description || '',
+        ingredients: row.ingredients || [],
+        method: row.method || [],
+        notes: row.notes || '',
+        image: row.image || '',
+        seed: id.startsWith('seed-')
+      };
+    });
+    // Don't reset a visitor's reading position if nothing has changed.
+    const signature = JSON.stringify(recipes);
+    if (signature !== loadPublicRecipes.lastSignature) {
+      loadPublicRecipes.lastSignature = signature;
+      const position = window.scrollY;
+      render();
+      window.scrollTo(0, position);
+    }
+  }
+
+  // The owner continues to use the existing authenticated cloud sync.
+  // Everyone else automatically loads the public recipes on opening the site.
+  render();
+  if (!token) loadPublicRecipes().catch(error => console.warn(error));
+  window.addEventListener('focus', () => {
+    if (!token) loadPublicRecipes().catch(() => {});
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && !token) loadPublicRecipes().catch(() => {});
+  });
+  setInterval(() => {
+    if (!document.hidden && !token) loadPublicRecipes().catch(() => {});
+  }, 60000);
+}})();
