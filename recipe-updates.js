@@ -902,3 +902,126 @@
     console.warn('Batch 8 recipe storage update:', error);
   }
 })();
+/* Maika's Cookbook — Batch 9: Vanilla Cupcakes + Chocolate Cupcakes.
+   APPEND to the END of your existing recipe-updates.js; keep all prior batches. */
+(() => {
+  'use strict';
+  const updates = [
+  {
+    "id": "seed-4",
+    "title": "Soft Vanilla Cupcakes with Swiss Meringue Buttercream",
+    "category": "Desserts & Baking",
+    "time": "20 min prep + 17–21 min baking + cooling & frosting",
+    "servings": "6 cupcakes",
+    "image": "vanilla-cupcakes-batch9.jpg",
+    "seed": true,
+    "description": "Small-batch, soft vanilla cupcakes with a delicate, moist crumb and silky, lightly sweet vanilla Swiss meringue buttercream.",
+    "ingredients": [
+      "VANILLA CUPCAKES — 75 g unsalted butter, softened",
+      "80 g caster sugar",
+      "1 large egg, room temperature",
+      "1 tsp vanilla extract",
+      "90 g all-purpose flour",
+      "¾ tsp baking powder",
+      "60 ml whole milk, room temperature",
+      "15 g full-fat sour cream",
+      "SWISS MERINGUE BUTTERCREAM — 2 large egg whites (approximately 60 g)",
+      "120 g granulated sugar",
+      "150 g unsalted butter, softened but cool",
+      "1 tsp vanilla extract",
+      "Small pinch of salt"
+    ],
+    "method": [
+      "Preheat the oven to 175°C conventional heat and line six wells of a muffin tin with cupcake liners.",
+      "Whisk the flour and baking powder together in a small bowl to distribute the raising agent evenly.",
+      "Using the paddle attachment on a stand mixer, cream the softened butter and caster sugar for approximately 3–4 minutes, until pale and fluffy.",
+      "Add the room-temperature egg and beat until incorporated, scraping down the sides of the bowl as needed.",
+      "Mix in the vanilla extract.",
+      "In a small jug, whisk the whole milk and sour cream together until smooth.",
+      "With the mixer on low, add one-third of the flour mixture followed by half of the milk mixture. Repeat and finish with the remaining flour. Mix only until incorporated.",
+      "Divide the batter evenly between six cupcake liners, filling each approximately two-thirds full.",
+      "Bake for approximately 17–21 minutes until the cupcakes spring back gently and a toothpick inserted into the centre comes out clean.",
+      "Cool in the muffin tin for approximately five minutes, then transfer to a wire rack and cool completely before frosting.",
+      "For the Swiss meringue buttercream, place the egg whites and sugar in a heatproof bowl over a pan of gently simmering water, keeping the bowl above the water. Whisk continuously until the sugar dissolves and the mixture reaches approximately 70–72°C.",
+      "Transfer to a stand mixer fitted with the whisk attachment and whip until thick and glossy and the bowl has cooled to room temperature.",
+      "Switch to the paddle attachment and add the softened, cool butter gradually. Continue mixing until the buttercream becomes smooth and silky.",
+      "Mix in the vanilla extract and salt. Beat briefly on low speed to reduce large air bubbles.",
+      "Pipe elegant swirls of buttercream onto the completely cooled cupcakes using a large star or round piping tip."
+    ],
+    "notes": "The sour cream adds tenderness. Do not overmix after adding flour or overbake. This is a small batch of Swiss meringue buttercream rather than American buttercream. A thermometer is recommended when heating the egg whites and sugar."
+  },
+  {
+    "id": "seed-5",
+    "title": "Moist Chocolate Cupcakes with Chocolate Buttercream",
+    "category": "Desserts & Baking",
+    "time": "20 min prep + 17–21 min baking + cooling & frosting",
+    "servings": "6 cupcakes",
+    "image": "chocolate-cupcakes-batch9.jpg",
+    "seed": true,
+    "description": "Deeply chocolatey, moist cupcakes made with cocoa, melted dark chocolate and hot coffee, topped with smooth, creamy chocolate buttercream.",
+    "ingredients": [
+      "CHOCOLATE CUPCAKES — 63 g all-purpose flour",
+      "22 g unsweetened cocoa powder",
+      "100 g granulated sugar",
+      "½ tsp baking soda",
+      "¼ tsp baking powder",
+      "½ large beaten egg (approximately 25 g without shell)",
+      "60 ml buttermilk",
+      "40 ml neutral vegetable oil",
+      "½ tsp vanilla extract",
+      "60 ml hot freshly brewed coffee",
+      "30 g dark chocolate, chopped",
+      "CHOCOLATE BUTTERCREAM — 85 g salted butter, softened",
+      "140 g powdered sugar, sifted",
+      "2 tbsp unsweetened cocoa powder",
+      "2 tbsp heavy cream, plus more if needed",
+      "1 tsp vanilla extract",
+      "20–30 g melted dark chocolate (optional)"
+    ],
+    "method": [
+      "Preheat the oven to 175°C conventional heat and line six wells of a muffin tin with cupcake liners.",
+      "Sift the flour, cocoa powder, baking soda and baking powder into a bowl. Add the sugar and whisk until combined.",
+      "Beat one large egg in a separate bowl and weigh approximately 25 g of it for the recipe.",
+      "In another bowl, whisk together the measured egg, buttermilk, vegetable oil and vanilla extract.",
+      "Pour the wet ingredients into the dry ingredients and stir gently until just combined.",
+      "Melt the chopped dark chocolate gently in a microwave using short bursts or over barely simmering water.",
+      "Stir the melted chocolate into the batter, then gradually add the hot coffee and mix until smooth. The batter will be fairly fluid.",
+      "Divide the batter evenly between the six liners, filling each no more than approximately two-thirds full.",
+      "Bake for approximately 17–21 minutes. A toothpick inserted into the centre should come out clean or with a few moist crumbs.",
+      "Allow the cupcakes to cool in the tin for five minutes, then transfer to a wire rack until completely cool.",
+      "For the buttercream, beat the softened salted butter using a stand mixer with the paddle attachment for approximately 3–4 minutes until creamy and paler.",
+      "Sift together the powdered sugar and cocoa powder. Add gradually to the butter on low speed.",
+      "Add the vanilla and heavy cream. Beat until smooth and fluffy, adding a little extra cream if necessary for a silky piping consistency.",
+      "If using extra dark chocolate, allow it to cool to room temperature after melting, then beat it into the buttercream.",
+      "Transfer the frosting to a piping bag and pipe generous chocolate swirls onto the cooled cupcakes.",
+      "Serve at room temperature for the softest cupcake crumb and smoothest frosting."
+    ],
+    "notes": "The hot coffee intensifies chocolate flavour without making the cupcakes taste strongly of coffee. This frosting follows the later, lighter and sweeter chocolate buttercream variation, with melted chocolate optional. Avoid overbaking for a moist crumb."
+  }
+];
+  const byId = new Map(updates.map(recipe => [recipe.id, recipe]));
+  function merge(items) {
+    if (!Array.isArray(items)) return items;
+    const merged = items.map(recipe =>
+      byId.has(recipe.id) ? { ...recipe, ...byId.get(recipe.id) } : recipe
+    );
+    for (const recipe of updates) {
+      if (!merged.some(item => item.id === recipe.id)) merged.push({ ...recipe });
+    }
+    return merged;
+  }
+  if (Array.isArray(window.SEED_RECIPES)) {
+    window.SEED_RECIPES = merge(window.SEED_RECIPES);
+  }
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (Array.isArray(saved)) {
+        localStorage.setItem('maika_recipes', JSON.stringify(merge(saved)));
+      }
+    }
+  } catch (error) {
+    console.warn('Batch 9 recipe storage update:', error);
+  }
+})();
