@@ -1,0 +1,120 @@
+/* Maika's Cookbook — Batch 5: Cinnamon Rolls & Rosca Doce.
+   APPEND to the end of the EXISTING recipe-updates.js, after its final })();
+   Do not replace the existing file. */
+(() => {
+  'use strict';
+  const updates = [
+  {
+    "id": "seed-12",
+    "title": "Soft & Gooey Cinnamon Rolls",
+    "category": "Desserts & Baking",
+    "time": "35 min active + 1½–2¼ hr rising + 20–25 min baking",
+    "servings": "12 rolls",
+    "description": "Pillowy, buttery cinnamon rolls with generous cinnamon-sugar swirls, soft centres and a delicate vanilla glaze, made with my favourite enriched dough.",
+    "image": "cinnamon-rolls.jpg",
+    "seed": true,
+    "ingredients": [
+      "DOUGH — 500 g all-purpose flour",
+      "250 ml whole milk, lukewarm (35–38°C)",
+      "7 g instant yeast",
+      "75 g granulated sugar",
+      "1 large egg + 1 egg yolk",
+      "75 g unsalted butter, softened",
+      "7 g fine salt",
+      "20 g milk powder (optional, for extra softness)",
+      "CINNAMON FILLING — 80 g unsalted butter, very soft",
+      "110 g soft brown sugar",
+      "1½ tbsp ground cinnamon",
+      "Small pinch of salt",
+      "BEFORE BAKING — 60 ml heavy cream, at room temperature",
+      "VANILLA GLAZE — 100 g powdered sugar",
+      "20 g softened butter",
+      "2–3 tbsp whole milk",
+      "½ tsp vanilla extract"
+    ],
+    "method": [
+      "Prepare the milk mixture. Warm the milk until lukewarm, approximately 35–38°C; it should feel comfortably warm, never hot. Add the instant yeast, sugar, egg and egg yolk, and whisk until combined.",
+      "Bring the dough together. Add the flour, salt and optional milk powder to the bowl of a stand mixer. Pour in the milk mixture and mix using the dough hook on low speed until a rough dough forms.",
+      "Knead the dough. Continue kneading for approximately 5 minutes until the mixture becomes cohesive. Gradually add the softened butter in small pieces, allowing each addition to incorporate before adding more.",
+      "Develop the gluten. Knead for another 8–12 minutes on low to medium-low speed, until the dough becomes smooth, stretchy and elastic. It may feel slightly tacky, but it should not be excessively wet. Avoid adding too much extra flour, as this can make the rolls dense.",
+      "First rise. Shape the dough into a ball and transfer it to a lightly greased bowl. Cover and leave in a warm place for approximately 1–1½ hours, or until roughly doubled in size.",
+      "Prepare the filling. Mix the softened butter, brown sugar, cinnamon and pinch of salt into a spreadable paste. The butter should be soft enough to spread without tearing the dough, but not melted.",
+      "Roll and fill. Turn the risen dough onto a lightly floured surface. Roll it into a rectangle approximately 35 × 45 cm. Spread the cinnamon filling evenly over the surface, leaving a narrow border along one long edge.",
+      "Shape the rolls. Starting from the opposite long edge, roll the dough into a tight log. Cut into 12 evenly sized pieces using unflavoured dental floss or a sharp serrated knife.",
+      "Second rise. Arrange the rolls in a buttered baking dish, leaving a little space between them. Cover loosely and allow to rise for approximately 35–50 minutes, until visibly puffy and beginning to touch.",
+      "Add the cream. Preheat the oven to 175°C using conventional heat. Just before baking, gently pour the room-temperature heavy cream into the gaps between the rolls. This helps create a particularly soft, moist texture.",
+      "Bake. Bake for approximately 20–25 minutes, until the tops are lightly golden and the centres are cooked through. If the tops colour too quickly, cover loosely with aluminium foil toward the end.",
+      "Prepare the glaze. While the rolls bake, whisk together the powdered sugar, softened butter, vanilla and enough milk to create a smooth, thick but pourable glaze.",
+      "Finish and serve. Allow the rolls to cool for approximately 8–10 minutes before spreading the glaze over them. The residual warmth will soften the glaze and allow it to settle into the cinnamon swirls."
+    ],
+    "notes": "My favourite enriched dough, also used for coconut roscas. For more pronounced cinnamon swirls, increase the filling by about 50% and roll tightly. Aim for soft, gooey centres rather than dry, bread-like rolls. Avoid overbaking and serve slightly warm."
+  },
+  {
+    "id": "seed-13",
+    "title": "Rosca Doce com Calda de Coco",
+    "category": "Desserts & Baking",
+    "time": "35 min active + 1½–2¼ hr rising + 17–22 min baking",
+    "servings": "8 roscas",
+    "description": "Soft, golden Brazilian-style sweet bread twists made with the same buttery dough as my cinnamon rolls and soaked in a sweet, creamy coconut-milk syrup.",
+    "image": "rosca-doce-coconut.jpg",
+    "seed": true,
+    "ingredients": [
+      "SWEET DOUGH — 500 g all-purpose flour",
+      "250 ml whole milk, lukewarm (35–38°C)",
+      "7 g instant yeast",
+      "75 g granulated sugar",
+      "1 large egg + 1 egg yolk",
+      "75 g unsalted butter, softened",
+      "7 g fine salt",
+      "COCONUT SYRUP — 150 g sweetened condensed milk",
+      "100 ml full-fat coconut milk",
+      "60 ml heavy cream",
+      "30–50 ml whole milk, to adjust consistency",
+      "Small pinch of salt",
+      "½ tsp vanilla extract (optional)"
+    ],
+    "method": [
+      "Prepare the milk mixture. Warm the milk until lukewarm, approximately 35–38°C. Combine it with the instant yeast, sugar, whole egg and egg yolk. Mix until smooth.",
+      "Make the dough. Add the flour and salt to the bowl of a stand mixer fitted with the dough hook. Pour in the milk mixture and knead on low speed until a rough dough forms.",
+      "Incorporate the butter. Once the dough has begun to develop, add the softened butter gradually, kneading between additions. Continue mixing for approximately 8–12 minutes, until smooth, supple and elastic.",
+      "First rise. Shape the dough into a ball, place it in a lightly greased bowl and cover. Leave in a warm place for approximately 1–1½ hours, or until doubled in size.",
+      "Divide the dough. Transfer the risen dough to a lightly floured work surface. Gently press out the excess gas and divide it into eight equal portions. For consistent results, weigh the dough and divide the total by eight.",
+      "Shape the roscas. Roll each portion into a long, even rope. Fold it in half and twist the two strands around one another. Bring the ends together and tuck them underneath to form a small twisted ring or rosca. Repeat with the remaining dough.",
+      "Second rise. Arrange the shaped roscas on a parchment-lined baking tray, leaving enough space for expansion. Cover loosely and allow to rise for approximately 30–45 minutes, until visibly puffy.",
+      "Preheat the oven. Heat the oven to 175°C using conventional heat. If you want a particularly golden finish, lightly brush the roscas with a little milk before baking.",
+      "Bake. Bake for approximately 17–22 minutes, until lightly golden and cooked through. The roscas should remain soft rather than developing a thick, crunchy crust.",
+      "Prepare the coconut syrup. While the roscas bake, combine the condensed milk, coconut milk, heavy cream and salt in a bowl. Add the optional vanilla. Whisk until completely smooth.",
+      "Adjust the syrup. Add 30 ml of regular milk initially. Check the consistency and add up to another 20 ml if necessary. The syrup should be fluid enough to soak into the warm bread but still rich and creamy.",
+      "Soak the warm roscas. Transfer the freshly baked roscas to a shallow dish. While still warm, spoon the coconut syrup generously over each one, allowing it to run into the twists and crevices.",
+      "Repeat the soaking. Wait several minutes for the first addition to absorb, then spoon more syrup over the roscas. Continue until they are moist and glossy, without leaving them completely submerged.",
+      "Rest and serve. Allow the roscas to sit for approximately 10–15 minutes so the syrup can penetrate the soft bread. Serve slightly warm or at room temperature, with any remaining syrup spooned over the top."
+    ],
+    "notes": "Uses exactly the same soft enriched dough base as my cinnamon rolls. Coconut flavour comes from the syrup, not shredded coconut or a coconut filling. Add the creamy syrup in stages while the bread is still warm, so it soaks in rather than sitting on top. The finished roscas should be soft, moist and slightly sticky."
+  }
+];
+  const byId = new Map(updates.map(recipe => [recipe.id, recipe]));
+  function merge(recipes) {
+    if (!Array.isArray(recipes)) return recipes;
+    const merged = recipes.map(recipe => byId.has(recipe.id)
+      ? { ...recipe, ...byId.get(recipe.id) }
+      : recipe);
+    for (const update of updates) {
+      if (!merged.some(recipe => recipe.id === update.id)) merged.push({ ...update });
+    }
+    return merged;
+  }
+  if (Array.isArray(window.SEED_RECIPES)) {
+    window.SEED_RECIPES = merge(window.SEED_RECIPES);
+  }
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (Array.isArray(saved)) {
+        localStorage.setItem('maika_recipes', JSON.stringify(merge(saved)));
+      }
+    }
+  } catch (error) {
+    console.warn('Batch 5 recipe update could not access local storage:', error);
+  }
+})();

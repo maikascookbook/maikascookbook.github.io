@@ -1,27 +1,31 @@
-MAIKA'S COOKBOOK — BATCH 4 — USER-APPROVED ORIGINAL PHOTOGRAPHS
-Congolese Poulet Mayo + Arroz de Entrecosto + Responsive Photo Layout
+MAIKA'S COOKBOOK — BATCH 5
+Soft & Gooey Cinnamon Rolls + Rosca Doce com Calda de Coco
 
-THE OLD ZIP IS SUPERSEDED. USE ONLY THIS REVISED PACKAGE.
+This ZIP contains:
+1. cinnamon-rolls.jpg
+2. rosca-doce-coconut.jpg
+3. ADD-TO-END-of-recipe-updates-BATCH5.js.txt
+4. READ-ME-FIRST.txt
 
-PHOTOS (user-provided, original dimensions preserved):
-- poulet-mayo.jpg: the landscape parchment-paper chicken + plantain photo (1280x853). This is used on the recipe page and card.
-- poulet-mayo-portrait.jpg: the vertical photo of the same dish (1280x1920), included as a separate option for future card-image support. It is NOT automatically displayed by the current site.
-- arroz-entrecosto.jpg: the exact bowl-and-gold-spoon rice photo (876x720).
+Both photos are EXACTLY the two halves of the editorial concept approved in chat.
+They are AI interpretations of the user's original baked goods, not unaltered
+photos. Each half has 768 × 1024 native pixels, so some softness is possible
+when expanded to a very wide full-screen recipe image. No artificial upscale
+has been applied.
 
-TEXT FILES:
-- ADD-TO-END-of-recipe-updates.js.txt: the two full recipe updates
-- ADD-TO-END-of-styles.css.txt: responsive image layout improvements
+UPLOAD:
+1. Extract ZIP on iPad.
+2. GitHub repository root > Add file > Upload files.
+3. Upload all 4 files, commit directly to main.
 
-INSTALLATION — FOLLOW IN THIS ORDER
-1. Upload all 6 files from this ZIP to the repository root, then commit.
-2. Open ADD-TO-END-of-recipe-updates.js.txt in GitHub and tap the COPY icon beside Raw.
-3. Open the EXISTING recipe-updates.js, edit it, scroll to the bottom and paste AFTER the final })();, leaving existing code intact. Commit.
-4. Open ADD-TO-END-of-styles.css.txt and tap COPY beside Raw.
-5. Open the EXISTING styles.css, edit it, scroll to the bottom, paste new CSS, leaving existing code intact. Commit.
-6. Refresh https://maikascookbook.github.io/ and inspect both recipes, photos and layout.
-7. Only after confirming, delete the two temporary ADD-TO-END .txt files and this READ-ME-FIRST.txt from GitHub. KEEP all JPGs and the existing .js/.css files.
+APPLY RECIPES:
+4. Open ADD-TO-END-of-recipe-updates-BATCH5.js.txt in GitHub.
+5. Tap COPY icon beside Raw.
+6. Open the existing recipe-updates.js and tap Edit/pencil.
+7. Go to the absolute bottom, AFTER the final })();, press Return and paste.
+8. Commit changes directly to main.
+9. Refresh https://maikascookbook.github.io/ and inspect both recipes.
 
-IMPORTANT
-- Do not overwrite the existing recipe-updates.js or styles.css with these text files.
-- The rice photo has 876 original pixels across. We did not upscale it, so on very large displays its sharpness is limited by the source.
-- Photographs supplied by the user may still be subject to the original photographers' copyright; obtain permission or appropriate licensing before publishing them publicly if necessary.
+No CSS changes needed. The full-width photo and ingredient grid remain intact.
+You can delete the two temporary .txt files after confirming the website works.
+Keep the two JPGs and the existing recipe-updates.js.
