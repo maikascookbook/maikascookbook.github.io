@@ -1,38 +1,24 @@
-MAIKA'S COOKBOOK — BATCH 13
-Silky Vanilla Swiss Meringue Buttercream + Homemade Garlic Butter Bread
+MAIKA'S COOKBOOK — PUBLIC VIEWING + OWNER-ONLY EDITING
 
-This package CONTAINS TWO ACTUAL JPG FILES of the EXACT photos you selected
-and uploaded in screenshots. They are cropped from those screenshots, with
-browser interface removed. They are not newly generated AI images, nor
-replacements from another photo library.
+You have already completed the Supabase RLS security step.
 
-Each JPG is 995 x 560 pixels (16:9 landscape), not 1920 x 1080. Enlarging
-them would not recover lost detail. For higher resolution, the original
-photographs must be obtained from their source websites.
+NEXT — GITHUB (ONE FILE ONLY)
+1. Open your GitHub repository: maikascookbook/maikascookbook.github.io
+2. Open app.js and tap the pencil icon to edit it.
+3. Scroll ALL THE WAY to the bottom. The final line is: })();
+4. Open PASTE-BEFORE-FINAL-LINE-IN-app.js.txt from this package.
+5. Copy its ENTIRE contents and paste them on a NEW LINE immediately ABOVE the final })(); line.
+6. Do not remove any existing lines. Commit the change.
+7. Refresh your cookbook in Safari (the PWA may take a refresh to update).
 
-Source attribution:
-- Garlic bread: AkcniCeny.cz (as shown in your screenshot)
-- Swiss meringue buttercream: Once Upon a Chef (as shown in your screenshot)
-These photographs belong to their respective creators; using them on a
-public website may require the photographer's or publisher's permission.
+TEST:
+- In a private/incognito browser tab, open https://maikascookbook.github.io/
+- The recipes should load without signing in.
+- There should be no Add recipe, Edit recipe, or Delete controls.
+- On your signed-in iPad/iPhone, your editor and cloud sync still work.
+- After saving a recipe, a visitor can refresh to see it; while open, the public site also checks every 60 seconds and on returning to the tab.
 
-FILES INCLUDED:
-1. homemade-garlic-butter-bread-batch13.jpg
-2. silky-vanilla-swiss-meringue-buttercream-batch13.jpg
-3. ADD-TO-END-of-recipe-updates-BATCH13.js.txt
-4. READ-ME-FIRST.txt
+SECURITY:
+The code contains ONLY the public project URL and Supabase PUBLISHABLE key. Never paste your Supabase secret key or your password into GitHub. The RLS policies you installed enforce owner-only writes in the database.
 
-UPLOAD TO GITHUB:
-1. Extract the ZIP in Files on your iPad.
-2. Open the root of maikascookbook/maikascookbook.github.io.
-3. Add file > Upload files > select ALL FOUR files > commit to main.
-4. Open ADD-TO-END-of-recipe-updates-BATCH13.js.txt on GitHub.
-5. Copy the entire code using the icon next to Raw.
-6. Open EXISTING recipe-updates.js > pencil/Edit.
-7. Scroll to the very bottom, after Batch 12's final })();
-8. Press Return, paste Batch 13 code and commit to main.
-DO NOT replace recipe-updates.js or remove any previous code.
-
-No changes to CSS, layout or other website files are needed.
-The garlic bread recipe is a proposed reconstruction, not your recovered
-original recipe.
+If the guest page doesn't load, report the error; do not re-import backups or create a second account.
