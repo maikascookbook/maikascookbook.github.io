@@ -309,3 +309,116 @@
     console.warn('Batch 3 recipe update could not access local storage:', error);
   }
 })();
+/* Maika's Cookbook — Batch 4: Poulet Mayo + Arroz de Entrecosto.
+   APPEND this block at the BOTTOM of the existing recipe-updates.js.
+   Do not erase any existing recipe updates.
+*/
+(() => {
+  'use strict';
+  const newRecipes = [
+  {
+    "id": "seed-27",
+    "title": "Congolese Poulet Mayo",
+    "category": "Main Courses",
+    "time": "20 min prep · 55–70 min cooking",
+    "servings": "5–6",
+    "description": "A comforting Congolese-inspired chicken dish with golden chicken, softened onions and a creamy mayonnaise finish.",
+    "image": "poulet-mayo.jpg",
+    "seed": true,
+    "ingredients": [
+      "CHICKEN — 1 whole chicken, approximately 1.5–1.8 kg, cut into serving pieces",
+      "3 large onions, thinly sliced",
+      "4 garlic cloves, minced",
+      "1 chicken stock cube, or seasoning to taste",
+      "1 tsp white pepper",
+      "½ tsp black pepper",
+      "1 tsp paprika (optional)",
+      "2 tbsp neutral cooking oil",
+      "Salt, to taste",
+      "150–250 ml water, as needed",
+      "MAYONNAISE SAUCE — 200–250 g full-fat mayonnaise",
+      "1 tbsp Dijon mustard (optional)",
+      "1–2 tbsp concentrated chicken cooking juices",
+      "Fresh parsley, optional"
+    ],
+    "method": [
+      "Prepare and season the chicken: Pat the chicken pieces dry with kitchen paper. Season with white pepper, black pepper, paprika if using, garlic and crumbled stock cube. Mix thoroughly so the seasoning reaches every piece. Refrigerate for at least 30 minutes if you have time. Do not taste any marinade that has touched raw chicken.",
+      "Brown the chicken: Heat the oil in a large heavy-bottomed pot over medium-high heat. Add the chicken in batches, skin-side down where applicable. Cook until golden on both sides, approximately 3–5 minutes per side. You are developing flavour here, not cooking the chicken completely. Transfer to a plate.",
+      "Cook the onions: Reduce the heat to medium and add the sliced onions to the same pot. Stir to loosen the browned chicken bits from the bottom. Cook for 8–12 minutes, stirring occasionally, until the onions soften, release their moisture and begin to turn lightly golden. They should be sweet and soft rather than crisp.",
+      "Build the cooking sauce: Return the chicken and its juices to the pot. Add approximately 150 ml water, scraping up any remaining browned bits. Cover and simmer gently for 25–35 minutes, turning the pieces occasionally. Add a little extra water only if the pot becomes too dry. The chicken should be fully cooked and tender, reaching at least 74°C at the thickest part.",
+      "Concentrate the juices: Remove the lid and allow excess liquid to reduce for 5–10 minutes. You want flavourful, concentrated cooking juices coating the chicken, not a watery broth. If there is a lot of liquid, temporarily remove the chicken and reduce the juices separately.",
+      "Prepare the mayonnaise mixture: In a clean bowl, combine the mayonnaise and optional mustard. Allow the concentrated cooking juices to cool slightly, then stir in 1–2 tablespoons gradually. This loosens the mayonnaise and incorporates the chicken flavour.",
+      "Coat the chicken: Remove the pot from direct heat and let vigorous bubbling subside. Fold the mayonnaise mixture into the chicken and onions, coating everything evenly. If necessary, warm very gently without bringing the sauce to a hard boil, which can make it separate or become oily.",
+      "Adjust the texture: The sauce should cling to the chicken, with softened onions distributed throughout. If too thick, add a small spoonful of warm cooking juices. If too thin, avoid adding more water; allow the mixture to settle and adjust carefully.",
+      "Serve: Transfer to a serving dish and finish with parsley if desired. Serve hot with rice, fried plantain, potatoes or your preferred accompaniment."
+    ],
+    "notes": "A proposed home-style interpretation rather than Maika's original, unrecovered recipe. Let the onions soften and sweeten; full-fat mayonnaise gives a richer coating. Avoid vigorous boiling after adding mayonnaise. Some Congolese versions grill the chicken and finish in a parcel with onions and peppers."
+  },
+  {
+    "id": "seed-18",
+    "title": "Arroz de Entrecosto (Creamy Portuguese Pork Rib Rice)",
+    "category": "Pasta & Rice",
+    "time": "20 min prep · 75–100 min cooking",
+    "servings": "3–4",
+    "description": "Tender pork ribs and Portuguese-style short-grain rice simmered in a deeply flavoured tomato broth until glossy and creamy.",
+    "image": "arroz-entrecosto.jpg",
+    "seed": true,
+    "ingredients": [
+      "PORK RIBS — 700 g pork ribs (entrecosto), cut into individual pieces",
+      "2 tbsp olive oil",
+      "1 medium onion, finely chopped",
+      "3 garlic cloves, minced",
+      "½ red bell pepper, finely diced",
+      "2 ripe tomatoes, grated, or 200 g canned chopped tomatoes",
+      "1 tbsp tomato paste",
+      "1 tsp sweet or smoked paprika",
+      "½ tsp dried thyme (optional)",
+      "1 bay leaf",
+      "Salt and freshly ground black pepper",
+      "RICE — 300 g short-grain round rice, such as Cigala arroz redondo",
+      "Approximately 1–1.2 litres hot beef, pork or vegetable stock, including any flavourful pork cooking liquid",
+      "Fresh parsley, finely chopped, to serve"
+    ],
+    "method": [
+      "Prepare the ribs: Pat the pork ribs dry with kitchen paper and season generously with salt and black pepper. If the pieces are particularly large, cut them into smaller portions so they cook more evenly.",
+      "Brown the ribs: Heat the olive oil in a large heavy-bottomed pot over medium-high heat. Add the ribs in a single layer and brown on all sides, working in batches if necessary. This should take approximately 8–12 minutes in total. Look for deep golden patches on the meat. Remove and set aside.",
+      "Build the flavour base: Reduce the heat to medium. Add the onion and red pepper to the same pot, using the fat and browned bits left by the ribs. Cook for 5–7 minutes until softened. Add the garlic and stir for another 30–60 seconds, until fragrant.",
+      "Cook the tomato mixture: Add the grated tomatoes, tomato paste, paprika, thyme and bay leaf. Stir thoroughly and cook for approximately 5–8 minutes. The tomatoes should soften and reduce into a thicker, more concentrated sauce. This step gives the rice its deep colour and flavour.",
+      "Tenderise the pork: Return the browned ribs to the pot and add enough hot stock or water to mostly cover them. Bring to a gentle simmer, cover and cook for approximately 40–60 minutes, or until the pork is tender. The exact time depends on the size of the ribs. Check occasionally and add a little liquid if needed.",
+      "Prepare the rice stage: Once the ribs are tender, check how much liquid remains. You want approximately 900 ml hot liquid available to begin cooking the 300 g rice, with more hot stock reserved to adjust the consistency. Keep additional stock hot in a separate saucepan or jug.",
+      "Add the rice: Stir the uncooked Cigala round rice directly into the pot with the ribs and tomato base. Mix gently for about one minute so the grains are coated with the seasoned cooking juices.",
+      "Cook gradually: Add enough hot stock to keep the rice generously covered and simmer over medium-low heat, stirring periodically to prevent sticking. Unlike a classic Italian risotto, you don't need to add the stock one ladle at a time, but adding more as it absorbs gives you control over the final texture.",
+      "Monitor the rice carefully: Begin checking after approximately 15 minutes and continue according to the package instructions, usually around 15–20 minutes in total. Cigala round rice may release starch and absorb liquid differently from risotto rice, so use the texture rather than the clock as your final guide. The grains should be tender but not disintegrating.",
+      "Achieve the creamy consistency: As the rice approaches doneness, stir gently and add small splashes of hot stock if it becomes too thick. You want the grains suspended in a glossy, lightly flowing sauce. When you move a spoon through the pot, the rice should settle back slowly rather than remaining in a dry mound.",
+      "Finish the seasoning: Remove the bay leaf and taste the rice. Adjust salt and black pepper carefully, particularly if using seasoned stock. If it looks slightly looser than you want, allow it to rest briefly; it will continue absorbing liquid.",
+      "Serve immediately: Sprinkle with fresh parsley and serve while hot and creamy. This style of rice is at its best straight from the pot, before the grains absorb the remaining sauce."
+    ],
+    "notes": "Built around the 700 g pork rib batch and Cigala round rice, with a creamy risotto-like finish. Tenderise pork before adding rice. Add hot stock according to texture; round rice absorbs liquid differently from Arborio. Serve promptly, as leftovers thicken substantially. This newly approved version replaces an earlier pressure-cooker draft."
+  }
+];
+  const byId = new Map(newRecipes.map(recipe => [recipe.id, recipe]));
+  function merge(items) {
+    if (!Array.isArray(items)) return items;
+    const result = items.map(recipe => byId.has(recipe.id)
+      ? { ...recipe, ...byId.get(recipe.id) }
+      : recipe);
+    for (const recipe of newRecipes) {
+      if (!result.some(item => item.id === recipe.id)) result.push({ ...recipe });
+    }
+    return result;
+  }
+  if (Array.isArray(window.SEED_RECIPES)) {
+    window.SEED_RECIPES = merge(window.SEED_RECIPES);
+  }
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (Array.isArray(saved)) {
+        localStorage.setItem('maika_recipes', JSON.stringify(merge(saved)));
+      }
+    }
+  } catch (error) {
+    console.warn('Batch 4 recipe update could not access local storage:', error);
+  }
+})();
