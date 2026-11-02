@@ -6,7 +6,7 @@
   {
     "id": "seed-21",
     "image": "chicken-alfredo.jpg",
-    "title": "Creamy Garlic Chicken Alfredo",
+"title": "Creamy Garlic Chicken Alfredo",
     "category": "Pasta & Rice",
     "time": "35 min",
     "servings": "4",
@@ -38,7 +38,7 @@
   {
     "id": "seed-22",
     "image": "tomato-shrimp-pasta.jpg",
-    "title": "Garlic Butter Tomato Shrimp Pasta",
+"title": "Garlic Butter Tomato Shrimp Pasta",
     "category": "Pasta & Rice",
     "time": "35–40 min",
     "servings": "3–4",
@@ -69,12 +69,112 @@
     "notes": "Original July plan used 450 g pasta and 450 g shrimp for 2–3 servings. Adjusted to 300 g pasta and 350 g shrimp for approximately 3–4 moderate servings, keeping the tomato, garlic and butter quantities unchanged for a generous sauce. The original technique removed shrimp after searing; the later sauce-reduction discussion emphasized a glossy sauce, spoon-trail test and no starch thickener. Shrimp quantity was not inherently wrong; the original serving count was especially generous."
   }
 ];
+  updates.find(r => r.id === 'seed-21').image = 'chicken-alfredo.jpg';
+  updates.find(r => r.id === 'seed-22').image = 'tomato-shrimp-pasta.jpg';
+
+  // Approved Bolognese + Lasagna batch (both use the same ragù).
+  updates.push({
+  "id": "seed-14",
+  "title": "Lasagna Bolognese with Cheesy Béchamel",
+  "category": "Main Courses",
+  "time": "40–50 min baking, plus ragù and resting",
+  "servings": "8–10 portions",
+  "description": "The same slow-simmered Bolognese ragù layered with tender pasta and rich cheddar-Parmesan béchamel, baked golden and rested for clean slices.",
+  "ingredients": [
+    "BOLOGNESE: One full batch of Slow-Simmered Beef Bolognese (the exact same ragù recipe; see its entry)",
+    "1 kg ground beef",
+    "1 medium onion, finely diced",
+    "2 carrots, finely diced",
+    "2 celery stalks, finely diced",
+    "3–4 garlic cloves, minced",
+    "2 tbsp olive oil",
+    "150–170 g tomato paste",
+    "700–800 g crushed tomatoes",
+    "150 ml dry red wine",
+    "300 ml water initially; up to 100 ml more if needed",
+    "½ beef stock cube to start (adjust cautiously)",
+    "1–2 bay leaves",
+    "1 Parmesan rind, optional",
+    "100–150 ml whole milk",
+    "Salt and black pepper to taste",
+    "CHEESY BÉCHAMEL: 80 g butter",
+    "80 g plain flour",
+    "1 litre whole milk",
+    "100–120 g grated sharp cheddar",
+    "40–50 g freshly grated Parmesan",
+    "Small pinch nutmeg",
+    "Black pepper and salt, to taste",
+    "ASSEMBLY: Oven-ready lasagna sheets, enough for 3–4 layers",
+    "Extra grated cheese for topping, optional"
+  ],
+  "method": [
+    "Make the ragù first: Follow the Slow-Simmered Beef Bolognese recipe exactly, using the ingredients listed above. Simmer for 3–4 hours until rich and spoonable. For lasagna it must be thick enough not to pool in the dish, yet moist enough to help oven-ready sheets cook. If watery, reduce uncovered; if dry, add a little hot water. The ragù can be made a day ahead.",
+    "Make a pale roux: Melt 80 g butter in a saucepan over medium-low heat. Whisk in 80 g flour and cook 1–2 minutes. It should look like a smooth, thick, gently bubbling paste, smell slightly nutty and remain pale. If it browns, lower the heat.",
+    "Whisk in milk gradually: Add a small splash of the 1 litre milk while whisking vigorously. At first the mixture may tighten into a very thick paste—normal. Add more milk little by little, whisking smooth after each addition. Once fluid and lump-free, add the rest in larger portions. If stubborn lumps remain, whisk thoroughly or briefly blend.",
+    "Thicken the béchamel: Cook over medium-low heat, whisking along the bottom and corners, until it gently simmers and coats the back of a spoon. Draw a finger through the coating: a clear line should remain. The sauce must still be pourable and spreadable, not stiff like a thick cheese dip. If too thick, whisk in a splash more milk; if thin, simmer gently a little longer.",
+    "Add the cheese gently: Remove from heat or turn to the lowest setting. Stir in 100–120 g cheddar and 40–50 g Parmesan in small handfuls until smooth and glossy. Add a pinch of nutmeg and black pepper; taste before salting. Do not boil vigorously after adding cheese, which can make the sauce grainy or oily.",
+    "Prepare to assemble: Preheat oven to 180°C fan. Choose a deep baking dish. Spread a thin layer of ragù across the bottom so the first pasta layer doesn't stick. Have the ragù and béchamel ready before opening the lasagna sheets.",
+    "Build even layers: Lay down oven-ready lasagna sheets without excessive overlap. Spread an even layer of ragù, then béchamel. Repeat for roughly 3–4 pasta layers depending on the dish. Carry sauce into the corners and cover all exposed pasta edges so they don't bake hard. Reserve enough béchamel for a generous top layer; add optional grated cheese.",
+    "Bake covered: Tent foil over the dish so it doesn't stick to the top. Bake at 180°C fan for about 25–30 minutes. The filling should heat through and begin bubbling; a pale top at this point is normal. Check the sheet package if its required cooking time differs.",
+    "Brown uncovered: Remove foil carefully and bake another 15–20 minutes until the surface has golden-brown patches and the edges bubble. If the top browns before pasta is tender, loosely cover again. If cooked but pale, use the grill briefly while watching continuously.",
+    "Rest before slicing: Leave the lasagna undisturbed for 25–30 minutes after baking. Straight from the oven, béchamel and ragù are too fluid and the layers slide apart. As it rests, bubbling subsides and the slices hold together. Cut with a sharp knife and lift with a wide spatula."
+  ],
+  "notes": "Uses the EXACT same ragù as the separate Bolognese recipe—no second meat sauce formula. Original lasagna used a long-simmered ragù, 80 g butter + 80 g flour + 1 litre milk, cheddar and Parmesan. An alternative finish of 60–75 ml evaporated milk in the ragù was discussed. Most important cues: well-reduced ragù, smooth spreadable béchamel, covered then uncovered baking, 25–30 min rest.",
+  "image": "lasagna-bolognese.jpg",
+  "seed": true
+},
+{
+  "id": "maika-bolognese-2026",
+  "title": "Slow-Simmered Beef Bolognese",
+  "category": "Pasta & Rice",
+  "time": "4–5 hours",
+  "servings": "6–8 servings of ragù",
+  "description": "A rich, slow-simmered beef ragù with soffritto, tomatoes, wine and a gentle milk finish. The same ragù is used in Maika's lasagna.",
+  "ingredients": [
+    "1 kg ground beef",
+    "1 medium onion, finely diced",
+    "2 carrots, finely diced",
+    "2 celery stalks, finely diced",
+    "3–4 garlic cloves, minced",
+    "2 tbsp olive oil",
+    "150–170 g tomato paste",
+    "700–800 g crushed tomatoes",
+    "150 ml dry red wine",
+    "300 ml water initially; up to 100 ml more if needed",
+    "½ beef stock cube to start (adjust cautiously)",
+    "1–2 bay leaves",
+    "1 Parmesan rind, optional",
+    "100–150 ml whole milk",
+    "Salt and black pepper to taste",
+    "Pasta and freshly grated Parmesan, to serve (optional)"
+  ],
+  "method": [
+    "Prepare the soffritto: Finely dice onion, carrots and celery to similarly small pieces. Warm olive oil in a heavy pot over medium-low heat. Cook the vegetables 10–15 minutes, stirring, until soft, sweet-smelling and translucent rather than dark or crisp. If they brown too fast, reduce the heat and add a tablespoon of water. Add garlic only for the final 30–60 seconds, until fragrant.",
+    "Brown the beef thoroughly: Increase heat to medium-high, add ground beef and break it into small pieces. At first the meat may turn grey and release liquid. Keep cooking until most moisture evaporates and browned spots develop on the meat and bottom of the pot. If the pot is crowded and meat is steaming, brown it in batches. Browning gives the sauce depth; simply turning grey is not enough.",
+    "Cook the tomato paste: Stir in 150–170 g tomato paste and cook for 3–5 minutes, stirring frequently. It should change from bright red to a deeper brick-red and smell less sharp. Slight sticking is fine; scorching is not. Reduce heat if necessary.",
+    "Deglaze: Pour in 150 ml red wine and scrape the bottom to dissolve the browned bits. Simmer about 3–5 minutes until the strong wine aroma softens and the mixture becomes thicker rather than watery.",
+    "Add tomatoes and liquid: Stir in crushed tomatoes, 300 ml water, ½ stock cube, bay leaves and optional Parmesan rind. Bring to a gentle simmer. It will look loose at first; this is expected. Do not add all possible water now—add small splashes later only if needed. The original batch tasted overly stock-forward, so start with less stock and taste near the end.",
+    "Simmer low and slow for 3–4 hours: Lower heat until just a few small bubbles break the surface. Keep the lid slightly ajar and stir every 30–40 minutes, scraping the base. Early on, the sauce may look watery and separate. As it cooks, the meat softens, the color deepens and the liquid concentrates. If it starts sticking or looks dry, add a splash of hot water. Avoid a rolling boil, which evaporates liquid too quickly.",
+    "Check reduction visually: By the end the ragù should be thick, glossy and spoonable, not soup-like. Drag a wooden spoon along the bottom: the sauce should part briefly, then flow back together. This is a visual guide rather than a stopwatch test. If watery, simmer uncovered another 15–30 minutes; if dry and clumpy, add a little hot water and lower heat. For lasagna, keep it thick enough not to flood the layers.",
+    "Finish with milk: During the final 20–30 minutes stir in 100–150 ml whole milk, which rounds out the tomato acidity and mellows the sauce. It should blend in fully rather than remain in white streaks. A smaller amount of evaporated milk (around 60–75 ml) was discussed as a richer alternative for the lasagna batch; use one option, not both.",
+    "Taste and serve: Remove bay leaves and Parmesan rind. Taste before salting because stock and Parmesan already add salt. If stock tastes too dominant, do not add more cube. For pasta, toss a portion of ragù with cooked pasta and a splash of pasta water; for lasagna, let the ragù cool slightly before layering."
+  ],
+  "notes": "This is the SAME ragù used for Lasagna Bolognese with Cheesy Béchamel. Based on Maika's earlier cooking notes: use less water and start with less stock cube to avoid overpowering the beef and tomatoes; simmer 3–4 hours; Parmesan rind optional. Starting with ½ cube is a proposed adjustment, not a previously verified exact quantity.",
+  "image": "bolognese.jpg",
+  "seed": true
+});
   const byId = new Map(updates.map(recipe => [recipe.id, recipe]));
-  const apply = (items) => Array.isArray(items)
-    ? items.map(recipe => byId.has(recipe.id)
-        ? { ...recipe, ...byId.get(recipe.id) }
-        : recipe)
-    : items;
+  const apply = (items) => {
+    if (!Array.isArray(items)) return items;
+    const merged = items.map(recipe => byId.has(recipe.id)
+      ? { ...recipe, ...byId.get(recipe.id) }
+      : recipe);
+    // Add Bolognese only if not already present; preserve all other recipes.
+    if (!merged.some(recipe => recipe.id === 'maika-bolognese-2026')) {
+      merged.push({ ...byId.get('maika-bolognese-2026') });
+    }
+    return merged;
+  };
 
   if (Array.isArray(window.SEED_RECIPES)) {
     window.SEED_RECIPES = apply(window.SEED_RECIPES);
