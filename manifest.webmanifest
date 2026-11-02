@@ -1,1 +1,31 @@
-{"name":"Maika's Cookbook","short_name":"Cookbook","description":"A personal kitchen journal","start_url":"./","scope":"./","display":"standalone","background_color":"#f9f6f1","theme_color":"#f9f6f1","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+{
+  "name": "Maika's Cookbook — The Kitchen Journal",
+  "short_name": "Maika's Cookbook",
+  "description": "A personal collection of flavours, memories and recipes.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff8f1",
+  "theme_color": "#f9f6f1",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
