@@ -1269,3 +1269,116 @@
     console.warn('Batch 11 recipe storage update:', error);
   }
 })();
+/* Maika's Cookbook — Batch 12 corrected landscape real-photo version: Rich & Moist Chocolate Cake + Silky Chocolate Buttercream.
+   APPEND this whole block to the END of existing recipe-updates.js. Do not replace earlier batches. */
+(() => {
+  'use strict';
+  const updates = [
+  {
+    "id": "seed-3",
+    "title": "Rich & Moist Chocolate Cake",
+    "category": "Desserts & Baking",
+    "time": "20 min preparation + 30–40 min baking",
+    "servings": "One two-layer 20 cm cake",
+    "description": "A deeply chocolatey, tender cake with a soft, moist crumb. Hot coffee intensifies the cocoa flavour without a pronounced coffee taste.",
+    "image": "https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?auto=format&fit=crop&crop=entropy&w=2400&h=1350&q=85",
+    "seed": true,
+    "ingredients": [
+      "250 g all-purpose flour",
+      "70 g unsweetened cocoa powder",
+      "300 g granulated sugar",
+      "2 tsp baking powder",
+      "1½ tsp baking soda",
+      "½ tsp salt",
+      "3 large eggs",
+      "180 ml neutral vegetable oil",
+      "240 ml buttermilk",
+      "2 tsp vanilla extract",
+      "240 ml hot coffee or hot water"
+    ],
+    "method": [
+      "Preheat the oven to 175°C conventional heat. Grease two 20 cm round cake tins and line their bases with parchment paper.",
+      "In a large bowl, sift together the flour, cocoa powder, baking powder, baking soda and salt. Add the sugar and whisk thoroughly.",
+      "In a separate bowl, whisk the eggs, vegetable oil, buttermilk and vanilla until smooth.",
+      "Pour the wet ingredients into the dry ingredients and mix gently until no visible pockets of flour remain. Avoid overmixing.",
+      "Gradually pour in the hot coffee or water while mixing on low speed or whisking gently. The batter will become noticeably thin; this is normal.",
+      "Divide the batter evenly between the prepared tins. Gently tap them on the counter to release large air bubbles.",
+      "Place the tins on the middle oven rack and bake for approximately 30–40 minutes, checking from 30 minutes onward.",
+      "Insert a skewer into the centre. It should come out clean or with a few moist crumbs rather than wet batter.",
+      "Leave the cakes in their tins for approximately 10–15 minutes before carefully turning them out onto a wire rack.",
+      "Allow the layers to cool completely before adding frosting. Warm cake will melt buttercream.",
+      "If the cakes have domed significantly, use a serrated knife to level the tops.",
+      "Place the first cake layer on a serving plate, spread with chocolate buttercream, add the second layer and frost the top and sides.",
+      "Smooth the frosting with an offset spatula or create soft, textured swirls."
+    ],
+    "notes": "Your original recipe used 240 ml goat milk mixed with one tablespoon of lemon juice as a buttermilk substitute; let stand about 10 minutes. The original cake frosting was not recorded, so the chocolate buttercream in Batch 12 is a suggested pairing, not a verified original. Baking times and tin sizes are practical estimates."
+  },
+  {
+    "id": "seed-7",
+    "title": "Silky Chocolate Buttercream",
+    "category": "Desserts & Baking",
+    "time": "15–20 min",
+    "servings": "One small batch",
+    "description": "A smooth, creamy chocolate frosting for filling cakes, frosting cupcakes or piping beautiful swirls. Two original variations are preserved.",
+    "image": "https://images.unsplash.com/photo-1590080875852-ba44f83ff2db?auto=format&fit=crop&crop=entropy&w=2400&h=1350&q=85",
+    "seed": true,
+    "ingredients": [
+      "ORIGINAL CHOCOLATE-ENRICHED VERSION",
+      "85 g unsalted butter, softened",
+      "125 g powdered sugar, sifted",
+      "22 g unsweetened cocoa powder, sifted",
+      "50 g dark chocolate, melted and cooled",
+      "½ tsp vanilla extract",
+      "1–2 tbsp heavy cream",
+      "LATER ADJUSTED VERSION",
+      "85 g salted butter, softened",
+      "1 cup + 2 tbsp powdered sugar",
+      "2 tbsp unsweetened cocoa powder",
+      "2 tbsp heavy cream",
+      "1 tsp vanilla extract",
+      "Melted dark chocolate, optional"
+    ],
+    "method": [
+      "Remove the butter from the refrigerator and allow it to soften until pliable but not melted.",
+      "Sift the powdered sugar and cocoa powder together to eliminate lumps.",
+      "If making the original chocolate-enriched version, gently melt the dark chocolate in short microwave bursts or over a bain-marie. Let it cool until no longer warm.",
+      "Place the softened butter in a KitchenAid bowl fitted with the paddle attachment. Beat on medium speed for approximately 3–5 minutes until lighter, creamy and smooth.",
+      "Reduce the mixer to low speed and gradually incorporate the sifted powdered sugar and cocoa powder.",
+      "Once incorporated, increase to medium speed and beat for another 2 minutes, scraping down the bowl as necessary.",
+      "Pour in the vanilla extract and mix briefly.",
+      "For the original version, add the cooled melted dark chocolate and mix until completely smooth. For the adjusted version, omit it unless desired.",
+      "Add heavy cream gradually, starting with one tablespoon, until the frosting reaches your preferred consistency.",
+      "For spreading between cake layers, the buttercream should be soft and smooth. For piping, keep it slightly firmer.",
+      "Mix on low speed for another 1–2 minutes to reduce large air bubbles.",
+      "Taste and adjust with a little more cocoa for deeper chocolate flavour or a small amount of cream if too stiff.",
+      "Spread over fully cooled cakes or transfer to a piping bag fitted with your preferred nozzle."
+    ],
+    "notes": "Two formulas were recorded; the final preferred variation was not conclusively verified. For a full two-layer cake, double or triple the recipe depending on how thickly you frost it. A thin filling and smooth outer layer keep it less heavy."
+  }
+];
+  const byId = new Map(updates.map(recipe => [recipe.id, recipe]));
+  function merge(items) {
+    if (!Array.isArray(items)) return items;
+    const merged = items.map(recipe =>
+      byId.has(recipe.id) ? { ...recipe, ...byId.get(recipe.id) } : recipe
+    );
+    for (const update of updates) {
+      if (!merged.some(recipe => recipe.id === update.id)) merged.push({ ...update });
+    }
+    return merged;
+  }
+  if (Array.isArray(window.SEED_RECIPES)) {
+    window.SEED_RECIPES = merge(window.SEED_RECIPES);
+  }
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (Array.isArray(saved)) {
+        localStorage.setItem('maika_recipes', JSON.stringify(merge(saved)));
+      }
+    }
+  } catch (error) {
+    console.warn('Batch 12 recipe storage update:', error);
+  }
+})();
