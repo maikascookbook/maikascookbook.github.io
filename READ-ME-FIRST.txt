@@ -1,39 +1,38 @@
-MAIKA'S COOKBOOK — BATCH 10
-Garlic & Herb Parmesan Mashed Potatoes + Creamy Mushroom Parmesan Risotto
+MAIKA'S COOKBOOK — BATCH 11
+Homemade Chicken Noodle Soup + Ground Beef & Roasted Sweet Potato Bowls
 
-PACKAGE FILES
-- garlic-parmesan-mashed-potatoes-batch10.jpg
-- mushroom-parmesan-risotto-batch10.jpg
-- ADD-TO-END-of-recipe-updates-BATCH10.js.txt
+FILES INCLUDED
+- chicken-noodle-soup-batch11.jpg
+- beef-sweet-potato-bowl-batch11.jpg
+- ADD-TO-END-of-recipe-updates-BATCH11.js.txt
 - READ-ME-FIRST.txt
 
-The two food images are generated editorial interpretations of the approved
-visual direction, not copies of external reference photographs. Each is
-768 × 1024 pixels, cropped from the approved two-panel composition, without
-artificial upscaling. They may look softer at full-screen website width.
+The food images are newly generated editorial interpretations inspired by
+your selected reference photographs, not copies of the originals. Each
+image is 768 × 1024 px, cropped from a 1536 × 1024 two-panel composition.
+No artificial upscaling was applied; full-width images may appear softer.
 
-STEP 1 — UPLOAD
-Extract the ZIP in your iPad Files app. Open the root of your GitHub
-repository maikascookbook/maikascookbook.github.io.
-Choose Add file > Upload files, upload all four files and commit to main.
+STEP 1 — UPLOAD TO GITHUB
+Extract the ZIP on your iPad.
+Open maikascookbook/maikascookbook.github.io in GitHub.
+Use Add file > Upload files to upload all four files to the repository ROOT.
+Commit to main.
 
-STEP 2 — APPEND THE RECIPES
-Open ADD-TO-END-of-recipe-updates-BATCH10.js.txt in GitHub.
-Tap the copy icon next to Raw.
-Open your EXISTING recipe-updates.js and tap the pencil/Edit button.
-Scroll to the very end, AFTER the final })(); of Batch 9.
-Press Return, paste the complete Batch 10 code, and commit to main.
-DO NOT delete or overwrite the earlier code.
+STEP 2 — APPEND CODE (DO NOT REPLACE)
+Open ADD-TO-END-of-recipe-updates-BATCH11.js.txt on GitHub.
+Use the copy icon next to Raw to copy the entire file.
+Open the EXISTING recipe-updates.js, then tap the pencil/Edit button.
+Scroll to the end AFTER the final })(); from Batch 10.
+Press Return, paste the Batch 11 block and commit to main.
+Keep all code from previous batches.
 
 STEP 3 — CHECK
-Refresh https://maikascookbook.github.io/ and inspect both recipes.
-Your full-width photo, ingredient columns and method layout stay unchanged.
-No CSS changes are needed.
+Refresh https://maikascookbook.github.io/
+Open both new recipe pages and verify images, ingredients and methods.
+No CSS edits are needed. The existing recipe page layout is unchanged.
+If updates do not appear, caching/localStorage/cloud sync may need investigation.
 
-IMPORTANT: If the site still shows old versions after the commit, the issue
-may involve browser cache, localStorage, or cloud synchronization. Check
-the deployed site separately; uploading code alone does not prove it is live.
+Once working, the temporary .txt files may be removed from GitHub.
+Keep both JPGs and the updated recipe-updates.js.
 
-After confirming everything works, you may remove the temporary .txt files.
-Keep the two JPGs and recipe-updates.js.
-Recipe IDs: seed-15 and seed-16.
+Recipe IDs: seed-19 and seed-25.
