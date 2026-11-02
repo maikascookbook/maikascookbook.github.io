@@ -1,38 +1,38 @@
-MAIKA'S COOKBOOK — BATCH 11
-Homemade Chicken Noodle Soup + Ground Beef & Roasted Sweet Potato Bowls
+MAIKA'S COOKBOOK — BATCH 13
+Silky Vanilla Swiss Meringue Buttercream + Homemade Garlic Butter Bread
 
-FILES INCLUDED
-- chicken-noodle-soup-batch11.jpg
-- beef-sweet-potato-bowl-batch11.jpg
-- ADD-TO-END-of-recipe-updates-BATCH11.js.txt
-- READ-ME-FIRST.txt
+This package CONTAINS TWO ACTUAL JPG FILES of the EXACT photos you selected
+and uploaded in screenshots. They are cropped from those screenshots, with
+browser interface removed. They are not newly generated AI images, nor
+replacements from another photo library.
 
-The food images are newly generated editorial interpretations inspired by
-your selected reference photographs, not copies of the originals. Each
-image is 768 × 1024 px, cropped from a 1536 × 1024 two-panel composition.
-No artificial upscaling was applied; full-width images may appear softer.
+Each JPG is 995 x 560 pixels (16:9 landscape), not 1920 x 1080. Enlarging
+them would not recover lost detail. For higher resolution, the original
+photographs must be obtained from their source websites.
 
-STEP 1 — UPLOAD TO GITHUB
-Extract the ZIP on your iPad.
-Open maikascookbook/maikascookbook.github.io in GitHub.
-Use Add file > Upload files to upload all four files to the repository ROOT.
-Commit to main.
+Source attribution:
+- Garlic bread: AkcniCeny.cz (as shown in your screenshot)
+- Swiss meringue buttercream: Once Upon a Chef (as shown in your screenshot)
+These photographs belong to their respective creators; using them on a
+public website may require the photographer's or publisher's permission.
 
-STEP 2 — APPEND CODE (DO NOT REPLACE)
-Open ADD-TO-END-of-recipe-updates-BATCH11.js.txt on GitHub.
-Use the copy icon next to Raw to copy the entire file.
-Open the EXISTING recipe-updates.js, then tap the pencil/Edit button.
-Scroll to the end AFTER the final })(); from Batch 10.
-Press Return, paste the Batch 11 block and commit to main.
-Keep all code from previous batches.
+FILES INCLUDED:
+1. homemade-garlic-butter-bread-batch13.jpg
+2. silky-vanilla-swiss-meringue-buttercream-batch13.jpg
+3. ADD-TO-END-of-recipe-updates-BATCH13.js.txt
+4. READ-ME-FIRST.txt
 
-STEP 3 — CHECK
-Refresh https://maikascookbook.github.io/
-Open both new recipe pages and verify images, ingredients and methods.
-No CSS edits are needed. The existing recipe page layout is unchanged.
-If updates do not appear, caching/localStorage/cloud sync may need investigation.
+UPLOAD TO GITHUB:
+1. Extract the ZIP in Files on your iPad.
+2. Open the root of maikascookbook/maikascookbook.github.io.
+3. Add file > Upload files > select ALL FOUR files > commit to main.
+4. Open ADD-TO-END-of-recipe-updates-BATCH13.js.txt on GitHub.
+5. Copy the entire code using the icon next to Raw.
+6. Open EXISTING recipe-updates.js > pencil/Edit.
+7. Scroll to the very bottom, after Batch 12's final })();
+8. Press Return, paste Batch 13 code and commit to main.
+DO NOT replace recipe-updates.js or remove any previous code.
 
-Once working, the temporary .txt files may be removed from GitHub.
-Keep both JPGs and the updated recipe-updates.js.
-
-Recipe IDs: seed-19 and seed-25.
+No changes to CSS, layout or other website files are needed.
+The garlic bread recipe is a proposed reconstruction, not your recovered
+original recipe.
