@@ -1,37 +1,37 @@
-MAIKA'S COOKBOOK — BATCH 6
-================================
-1. Moist Carrot Cake with Cream Cheese Frosting — seed-8
-2. Vanilla Sponge Cake with White Vanilla Buttercream — seed-1
+MAIKA’S COOKBOOK — BATCH 7
+==========================
+Recipes:
+1. Rich Vanilla Butter Cake with Swiss Meringue Buttercream (seed-2)
+2. Toddy Tres Leches Cake (seed-9)
 
-This package includes:
-- carrot-cake.jpg (the EXACT square carrot cake image approved in chat)
-- vanilla-sponge-buttercream.jpg (the EXACT two-layer vanilla cake image approved in chat)
-- ADD-TO-END-of-recipe-updates-BATCH6.js.txt (full recipe details and update code)
+FILES
+- vanilla-swiss-meringue-cake-batch7.jpg
+- toddy-tres-leches-batch7.jpg
+- ADD-TO-END-of-recipe-updates-BATCH7.js.txt
 - READ-ME-FIRST.txt
 
-Both pictures are AI-generated editorial images, not original bakery photos.
-Both are 1536 x 1024 pixels, saved at high-quality JPEG settings.
-The carrot cake is a single square layer with frosting on top.
-The vanilla cake has two sponge layers, white vanilla buttercream filling and coating.
+PHOTOS
+These are the EXACT left and right halves of the side-by-side AI editorial
+concept approved in chat. They are inspired by the user's actual homemade
+photos, but are AI interpretations, not direct retouches. Each is 768 × 1024
+native pixels. They may look a little softer when expanded into the site's
+full-width photo layout. No artificial upscaling has been applied.
 
-STEP 1 — UPLOAD
-1. Unzip on iPad.
-2. Open the root of maikascookbook/maikascookbook.github.io on GitHub.
-3. Add file > Upload files. Upload all four files and commit to main.
+UPLOAD TO GITHUB (iPad)
+1. Extract this ZIP in Files.
+2. Open github.com/maikascookbook/maikascookbook.github.io
+3. Add file > Upload files, select all four files, commit to main.
 
-STEP 2 — APPEND THE RECIPES (DO NOT REPLACE THE OLD CODE)
-1. Open ADD-TO-END-of-recipe-updates-BATCH6.js.txt in GitHub.
-2. Tap the copy icon next to Raw to copy the whole file.
-3. Open recipe-updates.js and tap the pencil to edit.
-4. Scroll to the VERY END, AFTER the last })(); from Batch 5.
-5. Insert a new line, paste the full Batch 6 block and commit to main.
+APPEND THE RECIPES — DO NOT REPLACE OLD CODE
+4. Open ADD-TO-END-of-recipe-updates-BATCH7.js.txt on GitHub.
+5. Use the copy icon beside Raw to copy the ENTIRE file.
+6. Open the EXISTING recipe-updates.js > pencil/Edit.
+7. Scroll to the very bottom, after the last })(); from Batch 6.
+8. Add a newline, paste all Batch 7 code, and commit to main.
 
-STEP 3 — CHECK
-Refresh https://maikascookbook.github.io/
-Open both recipes. Images should display above the ingredients; the existing
-ingredient grid and method layout should be unchanged.
+VERIFY
+9. Refresh https://maikascookbook.github.io/ and inspect both recipes.
+10. Both photos should appear above ingredients, with the existing layout intact.
 
-After confirming everything works, you may delete the temporary .txt files
-from GitHub. KEEP both JPG images and the updated recipe-updates.js.
-
-No CSS changes are required.
+No CSS changes are necessary. After checking, the temporary .txt files may be
+deleted from GitHub; keep the two JPGs and updated recipe-updates.js.
