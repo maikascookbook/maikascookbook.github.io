@@ -542,3 +542,129 @@
     console.warn('Batch 5 recipe update could not access local storage:', error);
   }
 })();
+/* Maika's Cookbook — Batch 6: Carrot Cake + Vanilla Sponge Buttercream.
+   APPEND the entire block below to the END of your EXISTING recipe-updates.js.
+   Do not overwrite earlier batches. */
+(() => {
+  'use strict';
+  const updates = [
+  {
+    "id": "seed-8",
+    "title": "Moist Carrot Cake with Cream Cheese Frosting",
+    "category": "Desserts & Baking",
+    "time": "20 min prep + 25–35 min baking + cooling",
+    "servings": "9–12 slices · 20 × 20 cm square pan",
+    "description": "A tender, exceptionally moist single-layer carrot cake with warm spices, a generous swirl of tangy cream cheese frosting and optional crunchy walnuts.",
+    "image": "carrot-cake.jpg",
+    "seed": true,
+    "ingredients": [
+      "CARROT CAKE — 180 g all-purpose flour",
+      "150 g granulated sugar",
+      "2 large eggs, at room temperature",
+      "120 ml neutral vegetable oil",
+      "200 g carrots, finely grated",
+      "1 tsp baking powder",
+      "½ tsp baking soda",
+      "1½ tsp ground cinnamon",
+      "½ tsp ground nutmeg",
+      "½ tsp fine salt",
+      "1 tsp vanilla extract",
+      "60 g chopped walnuts or pecans (optional)",
+      "CREAM CHEESE FROSTING — 200 g cold, full-fat cream cheese",
+      "80 g unsalted butter, softened",
+      "120–150 g powdered sugar, sifted",
+      "1 tsp vanilla extract",
+      "Small pinch of salt",
+      "TO FINISH — A few chopped walnuts, optional"
+    ],
+    "method": [
+      "Prepare the oven and pan. Preheat to 175°C conventional (top and bottom heat). Grease a 20 × 20 cm square baking pan and line it with parchment paper, leaving an overhang for easy lifting.",
+      "Prepare the carrots. Peel and finely grate the carrots using the small holes of a box grater. Do not squeeze out the moisture; it contributes to the cake’s soft, tender texture.",
+      "Mix the dry ingredients. In a medium bowl, whisk together the flour, baking powder, baking soda, cinnamon, nutmeg and salt until evenly combined.",
+      "Mix the wet ingredients. In a large bowl, whisk the eggs and sugar until smooth and slightly lighter in colour. Gradually whisk in the vegetable oil, followed by the vanilla extract.",
+      "Combine the batter. Fold the dry ingredients into the wet mixture in two additions using a spatula. Stop as soon as no dry flour remains; overmixing can make the crumb tough.",
+      "Add the carrots. Gently fold in the finely grated carrots and, if using, the chopped walnuts or pecans, distributing them evenly throughout the batter.",
+      "Fill the pan. Transfer the batter to the prepared square pan, spread into the corners and smooth the top.",
+      "Bake. Place on the middle oven rack and bake for approximately 25–35 minutes. Begin checking at 25 minutes. The centre should spring back lightly and a skewer should emerge clean or with a few moist crumbs.",
+      "Cool completely. Rest the cake in the pan for 10–15 minutes, then lift it out using the parchment paper and transfer to a cooling rack. The cake must be completely cool before frosting.",
+      "Beat the butter. Using the paddle attachment on a KitchenAid or an electric mixer, beat the softened butter until creamy. Add the sifted powdered sugar gradually and beat for 2–3 minutes until pale and smooth.",
+      "Finish the frosting. Add the vanilla, salt and cold cream cheese. Mix on low speed only until combined and smooth. Avoid prolonged beating, which can loosen cream cheese frosting.",
+      "Frost the single layer. Spread the cream cheese frosting generously over the top of the cooled square cake, creating soft swirls with an offset spatula. There is no filling or second cake layer.",
+      "Chill briefly and serve. Refrigerate for 20–30 minutes to help the frosting set, then cut into neat squares. Garnish with a few chopped walnuts if desired. Allow slices to stand briefly at room temperature before serving."
+    ],
+    "notes": "This is a SINGLE-LAYER square carrot cake, not a layered cake. The grated carrots and oil keep the crumb moist; do not squeeze the carrots or overbake. Add cold cream cheese last and beat only briefly. Store covered in the refrigerator for 3–4 days."
+  },
+  {
+    "id": "seed-1",
+    "title": "Vanilla Sponge Cake with White Vanilla Buttercream",
+    "category": "Desserts & Baking",
+    "time": "25 min prep + 25–35 min baking + cooling & frosting",
+    "servings": "10–12 slices · two 20 cm round layers",
+    "description": "A soft, buttery vanilla sponge baked in two layers and finished with silky white vanilla buttercream, with a generous slice revealing the tender golden crumb.",
+    "image": "vanilla-sponge-buttercream.jpg",
+    "seed": true,
+    "ingredients": [
+      "VANILLA SPONGE — 340 g all-purpose flour",
+      "300 g granulated sugar",
+      "2½ tsp baking powder",
+      "180 g softened butter (110 g salted + 70 g unsalted)",
+      "3 large eggs, at room temperature",
+      "270 ml whole milk, at room temperature",
+      "2 tsp vanilla extract",
+      "WHITE VANILLA BUTTERCREAM — 250 g unsalted butter, softened",
+      "400 g powdered sugar, sifted",
+      "2 tsp vanilla extract",
+      "2–3 tbsp whole milk or heavy cream, as needed",
+      "Small pinch of salt",
+      "FOR THE PANS — Softened butter and parchment paper"
+    ],
+    "method": [
+      "Prepare the oven. Preheat to 175°C conventional (top and bottom heat), with a rack in the centre.",
+      "Prepare two cake pans. Grease two 20 cm round cake pans and line the bases with parchment paper. Dividing the batter into two pans creates the two distinct layers shown in the photograph.",
+      "Bring ingredients to room temperature. The eggs, milk and butter should all be at room temperature to help the batter emulsify evenly.",
+      "Combine dry ingredients. Whisk or sift the flour and baking powder together in a medium bowl and set aside.",
+      "Cream the butter and sugar. Using the paddle attachment on a KitchenAid, beat the softened salted and unsalted butter with the sugar on medium speed for approximately 3–5 minutes until paler and fluffy. Scrape down the bowl occasionally.",
+      "Add the eggs. Beat in the eggs one at a time, mixing well after each. If the mixture appears slightly split, add one tablespoon of the measured flour to help bring it together.",
+      "Add vanilla. Mix in the vanilla extract briefly.",
+      "Alternate flour and milk. On low speed, add one-third of the flour mixture, then half the milk. Repeat, finishing with the remaining flour. Mix only until incorporated to avoid a dense or tough sponge.",
+      "Finish and divide the batter. Gently fold once or twice with a spatula to check for unmixed flour at the bottom. Divide the batter equally between the two prepared 20 cm pans and smooth the tops.",
+      "Bake the two layers. Bake for approximately 25–35 minutes, checking from minute 25. The tops should be lightly golden and spring back when gently touched; a skewer should come out clean or with a few moist crumbs. Pan depth and ovens vary.",
+      "Cool. Leave the cakes in their pans for 10–15 minutes, then carefully turn out onto cooling racks. Let both layers cool completely before frosting.",
+      "Beat the buttercream base. Beat the softened unsalted butter with the paddle attachment for approximately 4–5 minutes until smooth, fluffy and noticeably paler.",
+      "Add the sugar. Add the sifted powdered sugar in several additions on low speed, then beat until smooth. Add the vanilla and salt.",
+      "Adjust the consistency. Add milk or cream one tablespoon at a time until the frosting is smooth and easily spreadable but still holds its shape. Beat briefly on low speed at the end to reduce large air bubbles.",
+      "Fill the cake. Place one cooled sponge layer on a cake stand. Spread an even layer of vanilla buttercream over the top. Set the second sponge layer on top, with the flatter side facing upward.",
+      "Frost the exterior. Apply a thin crumb coat around the top and sides and chill for 15–20 minutes. Spread the remaining buttercream over the cake, using an offset spatula to make relaxed, elegant swirls.",
+      "Slice and serve. Allow the frosted cake to sit at a cool room temperature briefly before slicing so the buttercream softens and the crumb tastes tender and moist."
+    ],
+    "notes": "This is the ORIGINAL lighter vanilla sponge base, now with an added white vanilla buttercream and instructions for TWO 20 cm layers to match the approved photo. The richer Vanilla Butter Cake remains a separate recipe. For the softest texture, do not overmix after adding flour or overbake. The buttercream is deliberately generous for filling and coating the layer cake."
+  }
+];
+  const byId = new Map(updates.map(recipe => [recipe.id, recipe]));
+  const merge = (recipes) => {
+    if (!Array.isArray(recipes)) return recipes;
+    const result = recipes.map(recipe =>
+      byId.has(recipe.id) ? { ...recipe, ...byId.get(recipe.id) } : recipe
+    );
+    for (const update of updates) {
+      if (!result.some(recipe => recipe.id === update.id)) {
+        result.push({ ...update });
+      }
+    }
+    return result;
+  };
+  if (Array.isArray(window.SEED_RECIPES)) {
+    window.SEED_RECIPES = merge(window.SEED_RECIPES);
+  }
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (Array.isArray(saved)) {
+        localStorage.setItem('maika_recipes', JSON.stringify(merge(saved)));
+      }
+    }
+  } catch (error) {
+    console.warn('Batch 6 recipe storage update:', error);
+  }
+})();
