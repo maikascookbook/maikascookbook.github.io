@@ -1,0 +1,127 @@
+/* Maika’s Cookbook — Batch 14 (FINAL): 3 recipes, remove duplicate failed curry.
+   APPEND this block to the very end of the EXISTING recipe-updates.js.
+   Keep all previous batches intact. */
+(() => {
+  'use strict';
+  const updates = [
+  {
+    "id": "seed-24",
+    "title": "Caril de Amendoim de Frango",
+    "category": "Main Courses",
+    "time": "25 min prep · 1½–2 hr cooking",
+    "servings": "6–8",
+    "description": "Mozambican-style chicken simmered in a creamy peanut-and-coconut sauce, balanced with tomatoes, onion, garlic and a little lemon. This is the improved, not-yet-tested version of Maika’s original curry.",
+    "image": "caril-de-amendoim-de-frango-batch14.jpg",
+    "seed": true,
+    "ingredients": [
+      "8 chicken legs",
+      "2 medium onions, finely chopped",
+      "5 ripe tomatoes, chopped",
+      "5 garlic cloves, minced",
+      "About 1 litre homemade peanut milk (made from approximately 200 g finely ground peanuts and 1 litre water)",
+      "2 × 400 ml cans coconut milk",
+      "1 chicken stock cube",
+      "1 tbsp lemon juice",
+      "Salt, to taste",
+      "Piripíri, optional"
+    ],
+    "method": [
+      "Pat the chicken legs dry. Trim away excess skin or fat to avoid an overly oily finished sauce.",
+      "Heat a large, heavy-bottomed pot over medium heat. Render a modest amount of fat from the chicken skin and brown the chicken on both sides. Transfer to a plate.",
+      "Add the finely chopped onions to the pot and cook for 5–7 minutes until soft, stirring frequently.",
+      "Add the minced garlic and cook for approximately 1 minute, until fragrant.",
+      "Add the chopped tomatoes. Cook for 10–15 minutes, stirring occasionally, until they soften and reduce into a concentrated base.",
+      "To prepare the peanut milk, blend approximately 200 g finely ground peanuts with 1 litre water until well combined. Strain if you prefer a smoother sauce.",
+      "Pour approximately 1 litre of the peanut milk into the pot, followed by the two cans of coconut milk. Stir thoroughly.",
+      "Crumble in the chicken stock cube and bring the sauce to a gentle simmer.",
+      "Return the browned chicken legs and any resting juices to the pot.",
+      "Partially cover and simmer gently for approximately 45–75 minutes, stirring often, until the chicken is tender and cooked through (74°C at the thickest part, away from the bone). The sauce can take longer to reduce to your preferred consistency.",
+      "Scrape the bottom of the pot regularly so the peanut sauce does not catch or scorch. Add a little water if it becomes too thick.",
+      "Skim off any visible layer of excess oil from the surface.",
+      "Taste and season with salt. Stir in the lemon juice near the end to brighten the flavour; add piripíri if desired.",
+      "Let rest for a few minutes, then serve with fluffy white rice."
+    ],
+    "notes": "Maika’s Kitchen Notes — What I Learned: The first attempt used approximately 1.5 litres peanut milk, extra peanut powder and four cans of coconut milk; the result was too dense, peanut-heavy and oily. This version uses about 1 litre peanut milk, no extra peanut powder and only two cans of coconut milk. Use more onions, tomatoes and garlic to build flavour, season gradually, skim excess chicken fat and loosen the sauce with water as needed. This is a proposed revision and has not yet been tested. The photo is an editorial re-creation based on Maika’s own photograph of the original dish."
+  },
+  {
+    "id": "seed-28",
+    "title": "Homemade Tender French Fries",
+    "category": "Sides & Sauces",
+    "time": "15 min prep · 20 min soaking · 15–20 min frying",
+    "servings": "3–4",
+    "description": "Golden hand-cut French fries with a soft, fluffy centre and a delicate exterior — tender rather than hard or excessively crunchy.",
+    "image": "homemade-tender-french-fries-batch14.jpg",
+    "seed": true,
+    "ingredients": [
+      "800 g potatoes, preferably a floury or all-purpose variety",
+      "Neutral frying oil, enough for deep-frying",
+      "Fine salt, to taste"
+    ],
+    "method": [
+      "Peel the potatoes if preferred, then cut them by hand into medium-thick fries, approximately 1–1.5 cm wide.",
+      "Rinse the fries under cold water, then soak them in a bowl of cold water for approximately 20 minutes.",
+      "Drain thoroughly and pat completely dry with a clean kitchen towel to reduce splattering.",
+      "Pour frying oil into a deep, heavy-bottomed pan, filling it no more than one-third full. Heat to approximately 150–160°C.",
+      "Working in small batches, lower the fries carefully into the oil and cook for about 6–8 minutes until tender and cooked through, but still pale.",
+      "Lift the fries out with a slotted spoon and drain on a wire rack or paper towel. Rest for approximately 5 minutes.",
+      "Increase the oil temperature to approximately 170°C.",
+      "Fry each batch for another 2–3 minutes, just until evenly golden, not dark or heavily crisped.",
+      "Drain briefly, sprinkle with fine salt and serve immediately."
+    ],
+    "notes": "Maika prefers hand-cut fries that are properly golden but soft and tender, not frozen-looking, pale or aggressively crunchy. Slightly thicker cuts and a short final fry help keep the centres fluffy. This is a proposed method because the original preparation was not recorded. Never leave hot frying oil unattended; use a thermometer and keep water away from the pan."
+  },
+  {
+    "id": "seed-29",
+    "title": "Garlic Butter Asparagus",
+    "category": "To Try",
+    "time": "5 min prep · 7–10 min cooking",
+    "servings": "3–4",
+    "description": "Tender-crisp asparagus sautéed in garlic butter and finished with a little lemon — an easy side dish for steak, chicken or fish.",
+    "image": "garlic-butter-asparagus-batch14.jpg",
+    "seed": true,
+    "ingredients": [
+      "500 g fresh green asparagus",
+      "30 g unsalted butter",
+      "3 garlic cloves, finely minced",
+      "1 tbsp olive oil",
+      "Salt and freshly ground black pepper, to taste",
+      "1–2 tsp fresh lemon juice, optional"
+    ],
+    "method": [
+      "Rinse the asparagus and pat dry.",
+      "Trim approximately 2–3 cm from the woody ends. Peel the bottom of unusually thick stalks if needed.",
+      "Heat the olive oil in a large frying pan over medium heat.",
+      "Add the asparagus in a single layer and sauté for 4–6 minutes, turning occasionally.",
+      "Reduce the heat slightly and add the butter. Let it melt and coat the spears.",
+      "Add the minced garlic and cook for another 1–2 minutes until fragrant, without allowing it to burn.",
+      "Season with salt and freshly ground black pepper.",
+      "Check the thickest spear with a fork: it should be tender with a little structure remaining.",
+      "Add the optional lemon juice and toss gently.",
+      "Serve immediately, spooning the garlic butter from the pan over the asparagus."
+    ],
+    "notes": "To Try — not yet cooked or tested. Add garlic toward the end so it stays fragrant rather than bitter. Thick spears may need a little longer. The editorial asparagus image was cropped from the generated Batch 14 visual preview."
+  }
+];
+  const byId = new Map(updates.map(recipe => [recipe.id, recipe]));
+  const REMOVED_ID = 'seed-23'; // Failed first curry attempt; lessons retained in seed-24 notes.
+  function merge(items) {
+    if (!Array.isArray(items)) return items;
+    const result = items
+      .filter(recipe => recipe && recipe.id !== REMOVED_ID)
+      .map(recipe => byId.has(recipe.id) ? { ...recipe, ...byId.get(recipe.id) } : recipe);
+    for (const update of updates) {
+      if (!result.some(recipe => recipe.id === update.id)) result.push({ ...update });
+    }
+    return result;
+  }
+  if (Array.isArray(window.SEED_RECIPES)) window.SEED_RECIPES = merge(window.SEED_RECIPES);
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (Array.isArray(saved)) localStorage.setItem('maika_recipes', JSON.stringify(merge(saved)));
+    }
+  } catch (error) {
+    console.warn('Batch 14 recipe storage update:', error);
+  }
+})();

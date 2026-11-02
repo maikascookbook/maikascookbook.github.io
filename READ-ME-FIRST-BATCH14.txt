@@ -1,0 +1,36 @@
+MAIKA’S COOKBOOK — BATCH 14 (FINAL)
+Three recipes + three actual horizontal JPG images + update code.
+
+FILES:
+- caril-de-amendoim-de-frango-batch14.jpg
+- homemade-tender-french-fries-batch14.jpg
+- garlic-butter-asparagus-batch14.jpg
+- ADD-TO-END-of-recipe-updates-BATCH14-FINAL.js.txt
+- READ-ME-FIRST-BATCH14.txt
+
+IMPORTANT ABOUT PHOTOS
+The curry and fries images are the approved editorial images from this conversation,
+converted into real JPG files. The asparagus is a matching editorial illustration
+cropped from the Batch 14 preview graphic, rather than the exact earlier web
+reference photograph. Its source crop has lower detail than the other two photos.
+All three files are horizontal 16:9. Do not mistake pixel enlargement for
+additional original detail.
+
+GITHUB UPLOAD — TWO STEPS
+1. Unzip and upload ALL FIVE files to the ROOT of
+   https://github.com/maikascookbook/maikascookbook.github.io
+   using Add file > Upload files, then commit to main.
+2. Open ADD-TO-END-of-recipe-updates-BATCH14-FINAL.js.txt and copy ALL its code.
+   Open your EXISTING recipe-updates.js, tap Edit, scroll to the very bottom,
+   PASTE the new code AFTER Batch 13, and commit.
+   DO NOT REPLACE the existing recipe-updates.js or erase earlier batches.
+
+Batch 14 changes:
+- Removes the old failed curry entry (seed-23) from seed and local recipes.
+- Updates the improved curry (seed-24) as the ONLY Caril de Amendoim recipe,
+  with Maika’s lessons in Kitchen Notes.
+- Updates the fries (seed-28) to tender, golden, hand-cut fries.
+- Updates the asparagus (seed-29), keeping it in the To Try category.
+- All other recipes and website layout are preserved.
+
+The completed original collection should have 28 unique recipes.
