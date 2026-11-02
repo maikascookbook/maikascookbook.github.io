@@ -1,0 +1,28 @@
+MAIKA'S COOKBOOK — BATCH 3
+Hachis Parmentier + Pan-Seared Steak with Creamy Mashed Potatoes
+
+FILES
+1. ADD-TO-END-of-recipe-updates.js.txt — NEW CODE ONLY (append, do not replace)
+2. hachis-parmentier.jpg
+3. steak-mashed-potatoes.jpg
+
+GITHUB UPLOAD
+1. Upload the TWO JPG files to the ROOT of your GitHub repository.
+2. Upload ADD-TO-END-of-recipe-updates.js.txt as a temporary text file.
+3. Commit these three uploads to main.
+4. Open the uploaded .txt file in normal GitHub file view and tap the Copy button beside Raw.
+5. Open the EXISTING recipe-updates.js file and tap Edit (pencil).
+6. Scroll to the VERY END of the existing code, after the last })();.
+7. Insert a blank line and PASTE the copied new block at the bottom.
+8. DO NOT delete or replace the existing code: it contains the earlier four recipes.
+9. Commit the change to recipe-updates.js.
+10. Refresh your live website and confirm both recipes and photographs display.
+11. After confirming, delete only the temporary ADD-TO-END-of-recipe-updates.js.txt file.
+
+This method keeps all four previously updated recipes and updates the existing
+seed-17 and seed-20 recipe entries rather than creating duplicates.
+
+PHOTO NOTE
+The JPGs are enlarged crops of the approved cookbook-style concept imagery,
+not original high-resolution camera photographs. They are suitable for the
+website's cards but may appear soft at large display sizes.
