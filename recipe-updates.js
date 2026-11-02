@@ -1611,3 +1611,40 @@
     console.warn('Batch 14 recipe storage update:', error);
   }
 })();
+/* MAIKA'S COOKBOOK — Permanent correction for the two approved cake photos.
+   Paste this entire block at the VERY END of recipe-updates.js, after Batch 14.
+   It runs on every page load after earlier batch scripts, preventing the old photos
+   from coming back. It won't override a future photo you deliberately select. */
+(() => {
+  'use strict';
+  const photos = {
+    'seed-1': 'maika-vanilla-sponge-cake-final.jpg.jpg',
+    'seed-2': 'maika-vanilla-butter-cake-final.jpg.jpg'
+  };
+  const oldNames = {
+    'seed-1': ['vanilla-sponge-buttercream.jpg', 'maika-vanilla-sponge-cake-final.jpg', 'maika-vanilla-sponge-cake-full-landscape.jpg'],
+    'seed-2': ['vanilla-swiss-meringue-cake-batch7.jpg', 'maika-vanilla-butter-cake-final.jpg', 'maika-vanilla-butter-cake-full-landscape.jpg']
+  };
+  function isOld(id, image) {
+    return !image || oldNames[id].some(name => image === name || image.endsWith('/' + name));
+  }
+  function fix(list) {
+    if (!Array.isArray(list)) return false;
+    let changed = false;
+    for (const recipe of list) {
+      if (recipe && Object.prototype.hasOwnProperty.call(photos, recipe.id) && isOld(recipe.id, recipe.image)) {
+        recipe.image = photos[recipe.id];
+        changed = true;
+      }
+    }
+    return changed;
+  }
+  fix(window.SEED_RECIPES);
+  try {
+    const raw = localStorage.getItem('maika_recipes');
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (fix(saved)) localStorage.setItem('maika_recipes', JSON.stringify(saved));
+    }
+  } catch (error) { console.warn('Cake photo correction:', error); }
+})();
