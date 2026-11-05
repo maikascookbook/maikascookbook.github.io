@@ -26,8 +26,30 @@ return `<section class="hero updated-hero"><div class="hero-copy"><div class="ey
 <section class="home-wrap latest-area"><div class="home-section-head"><div><h2>Latest recipes</h2><p>My newest additions to the cookbook.</p></div><button class="text-link" data-go="library">View all recipes&nbsp; →</button></div><div class="latest-grid">${latest.map(r=>`<article class="latest-card" data-open="${esc(r.id)}" tabindex="0"><img loading="lazy" src="${esc(imageFor(r))}" alt="${esc(r.title)}"><div class="latest-card-body"><h3>${esc(r.title)}</h3><small>${esc(r.category)}</small><div class="latest-time">${esc(r.time||'From the kitchen journal')} <span>♡</span></div></div></article>`).join('')}</div></section>
 <section class="home-wrap closing-banner"><div><h2>More than just recipes...</h2><p>This is a collection of flavours, memories and the people and places that inspire what I cook.</p></div><div class="closing-note">Good food.<br>Better memories. ♡</div></section>`}
 function library(){let list=recipes.filter(r=>(filter==='All'||r.category===filter)&&(`${r.title} ${r.description} ${r.ingredients.join(' ')}`.toLowerCase().includes(search.toLowerCase())));return `<div class="container"><div class="browse-head"><div class="eyebrow">The complete collection</div><h1>The Recipe Library</h1><p>Find something wonderful to make.</p></div><input class="search" id="searchRecipes" placeholder="Search recipes or ingredients..." value="${esc(search)}" aria-label="Search recipes"><div class="filters">${['All',...categories].map(c=>`<button class="filter ${filter===c?'active':''}" data-filter="${esc(c)}">${esc(c)}</button>`).join('')}</div><div class="recipe-grid">${list.map(card).join('')}</div>${list.length?'':'<div class="empty">No recipes found. Try another search or add your own.</div>'}</div><div style="height:90px"></div>`}
-function recipePage(r){return `<article class="recipe-page"><div class="recipe-title"><div class="eyebrow">${esc(r.category)} · The kitchen journal</div><h1>${esc(r.title)}</h1><p>${esc(r.description)}</p><div class="recipe-tools"><button class="outline small" id="backRecipes">← All recipes</button><button class="outline small" data-edit="${esc(r.id)}">Edit recipe</button>${r.seed?'':`<button class="outline small" data-delete="${esc(r.id)}">Delete</button>`}</div></div><div class="recipe-top"><section class="ingredients"><div class="eyebrow">What you'll need</div><h2>Ingredients</h2><p class="muted">${esc(r.time||'Time not recorded')} ${r.servings?' · '+esc(r.servings):''}</p><ul>${r.ingredients.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></section><img class="recipe-photo" src="${esc(imageFor(r))}" alt="Editorial inspiration for ${esc(r.title)}"></div><div class="recipe-main"><div class="eyebrow">Step by step</div><h2>The Method</h2><ol class="method-list">${r.method.map(s=>`<li><span>${esc(s)}</span></li>`).join('')}</ol><div class="note-panel"><div class="eyebrow">From the kitchen journal</div><h3>Maika's notes</h3><p style="white-space:pre-line">${esc(r.notes||'Add your cooking notes, adjustments and discoveries here.')}</p></div><p class="muted" style="font-size:11px;margin-top:24px">Food imagery is editorial inspiration, not a photograph of the actual dish unless you replace it with your own. Some methods were reconstructed from available cooking notes; missing original details are identified.</p></div></article>`}
-function notes(){return `<div class="container"><div class="browse-head"><div class="eyebrow">A personal kitchen diary</div><h1>Kitchen Notes</h1><p>The discoveries that make each recipe my own.</p></div><div class="recipe-grid">${recipes.filter(r=>r.notes).slice(0,18).map(r=>`<article class="note-panel" style="margin:0;cursor:pointer" data-open="${esc(r.id)}"><div class="eyebrow">${esc(r.category)}</div><h3>${esc(r.title)}</h3><p style="white-space:pre-line">${esc(r.notes)}</p></article>`).join('')}</div></div><div style="height:90px"></div>`}
+// Kitchen Notes: safely render formatted notes while supporting older plain-text recipes.
+const NOTES_RICH_PREFIX='MAIKA_RICH_V1:';
+function cleanNotesHTML(html){
+  const doc=new DOMParser().parseFromString('<div>'+String(html||'')+'</div>','text/html');
+  const allowed=new Set(['B','STRONG','I','EM','U','P','DIV','BR','UL','OL','LI']);
+  function safe(node){
+    if(node.nodeType===3)return document.createTextNode(node.nodeValue);
+    if(node.nodeType!==1)return document.createDocumentFragment();
+    const out=allowed.has(node.tagName)?document.createElement(node.tagName.toLowerCase()):document.createDocumentFragment();
+    [...node.childNodes].forEach(child=>out.appendChild(safe(child)));
+    return out;
+  }
+  const root=document.createElement('div');
+  [...doc.body.firstElementChild.childNodes].forEach(node=>root.appendChild(safe(node)));
+  return root.innerHTML;
+}
+function notesHTML(value){
+  const raw=String(value||'');
+  if(raw.startsWith(NOTES_RICH_PREFIX))return cleanNotesHTML(raw.slice(NOTES_RICH_PREFIX.length));
+  return esc(raw).replace(/\r\n?/g,'\n').replace(/\n/g,'<br>');
+}
+
+function recipePage(r){return `<article class="recipe-page"><div class="recipe-title"><div class="eyebrow">${esc(r.category)} · The kitchen journal</div><h1>${esc(r.title)}</h1><p>${esc(r.description)}</p><div class="recipe-tools"><button class="outline small" id="backRecipes">← All recipes</button><button class="outline small" data-edit="${esc(r.id)}">Edit recipe</button>${r.seed?'':`<button class="outline small" data-delete="${esc(r.id)}">Delete</button>`}</div></div><div class="recipe-top"><section class="ingredients"><div class="eyebrow">What you'll need</div><h2>Ingredients</h2><p class="muted">${esc(r.time||'Time not recorded')} ${r.servings?' · '+esc(r.servings):''}</p><ul>${r.ingredients.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></section><img class="recipe-photo" src="${esc(imageFor(r))}" alt="Editorial inspiration for ${esc(r.title)}"></div><div class="recipe-main"><div class="eyebrow">Step by step</div><h2>The Method</h2><ol class="method-list">${r.method.map(s=>`<li><span>${esc(s)}</span></li>`).join('')}</ol><div class="note-panel"><div class="eyebrow">From the kitchen journal</div><h3>Maika's notes</h3><div class="maika-notes-display">${notesHTML(r.notes||'Add your cooking notes, adjustments and discoveries here.')}</div></div><p class="muted" style="font-size:11px;margin-top:24px">Food imagery is editorial inspiration, not a photograph of the actual dish unless you replace it with your own. Some methods were reconstructed from available cooking notes; missing original details are identified.</p></div></article>`}
+function notes(){return `<div class="container"><div class="browse-head"><div class="eyebrow">A personal kitchen diary</div><h1>Kitchen Notes</h1><p>The discoveries that make each recipe my own.</p></div><div class="recipe-grid">${recipes.filter(r=>r.notes).slice(0,18).map(r=>`<article class="note-panel" style="margin:0;cursor:pointer" data-open="${esc(r.id)}"><div class="eyebrow">${esc(r.category)}</div><h3>${esc(r.title)}</h3><div class="maika-notes-display">${notesHTML(r.notes)}</div></article>`).join('')}</div></div><div style="height:90px"></div>`}
 function render(){let r=recipes.find(x=>x.id===current);$('#app').innerHTML=current==='home'?home():current==='library'?library():current==='notes'?notes():r?recipePage(r):home();document.querySelectorAll('.navlink').forEach(x=>x.classList.toggle('active',x.dataset.page===current));window.scrollTo(0,0)}
 function go(page){current=page;render()}
 function openForm(r){editing=r?.id||null;$('#modalTitle').textContent=r?'Edit recipe':'Add a recipe';const f=$('#recipeForm');f.reset();if(r){for(const key of ['title','category','time','servings','description','notes','image'])f.elements[key].value=r[key]||'';f.elements.ingredients.value=r.ingredients.join('\n');f.elements.method.value=r.method.join('\n')}$('#modal').classList.remove('hidden')}
@@ -220,6 +242,72 @@ document.addEventListener('input',e=>{if(e.target.id==='searchRecipes'){search=e
     if (token && !document.hidden) cloudFetch().catch(()=>{});
   },60000);
 }
+/* Rich-text Kitchen Notes editor; saves safely within the existing notes field. */
+{
+  const field=$('#recipeForm').elements.notes;
+  const style=document.createElement('style');
+  style.textContent=`
+    .maika-notes-display{white-space:normal;line-height:1.75;overflow-wrap:anywhere}
+    .maika-notes-display p,.maika-notes-display div{margin:0 0 .85em}
+    .maika-notes-display ul,.maika-notes-display ol{padding-left:1.5em;margin:.6em 0 1em}
+    .maika-notes-display li{margin:.25em 0}
+    .maika-rich-wrap{margin:8px 0 16px}
+    .maika-rich-toolbar{display:flex;gap:5px;flex-wrap:wrap;padding:8px;border:1px solid #d9ced1;border-bottom:0;border-radius:9px 9px 0 0;background:#faf6f7}
+    .maika-rich-toolbar button{min-width:34px;min-height:34px;padding:5px 9px;border:1px solid #e4dadd;border-radius:6px;background:white;color:#48373e;font-size:14px;cursor:pointer}
+    .maika-rich-toolbar button:focus-visible{outline:2px solid #a57890}
+    .maika-rich-editor{min-height:135px;max-height:330px;overflow:auto;padding:13px;border:1px solid #d9ced1;border-radius:0 0 9px 9px;background:white;line-height:1.6;white-space:normal;overflow-wrap:anywhere}
+    .maika-rich-editor:focus{outline:2px solid #b992a3;outline-offset:-2px}
+    .maika-rich-editor:empty:before{content:'Write your kitchen discoveries here…';color:#a8a0a4;pointer-events:none}
+    .maika-rich-editor p,.maika-rich-editor div{margin:0 0 .7em}
+    .maika-rich-editor ul,.maika-rich-editor ol{padding-left:1.5em;margin:.5em 0}
+  `;
+  document.head.appendChild(style);
+  const wrapper=document.createElement('div');
+  wrapper.className='maika-rich-wrap';
+  const toolbar=document.createElement('div');
+  toolbar.className='maika-rich-toolbar';
+  toolbar.setAttribute('role','toolbar');
+  toolbar.setAttribute('aria-label','Kitchen Notes formatting');
+  const editor=document.createElement('div');
+  editor.className='maika-rich-editor';
+  editor.contentEditable='true';
+  editor.setAttribute('role','textbox');
+  editor.setAttribute('aria-label','Kitchen Notes');
+  editor.setAttribute('aria-multiline','true');
+  const commands=[['bold','B','Bold'],['italic','I','Italic'],['underline','U','Underline'],['insertOrderedList','1.','Numbered list'],['insertUnorderedList','•','Bullet list']];
+  for(const [command,label,title] of commands){
+    const button=document.createElement('button');
+    button.type='button';button.textContent=label;button.title=title;button.setAttribute('aria-label',title);
+    button.addEventListener('pointerdown',e=>e.preventDefault());
+    button.addEventListener('click',()=>{
+      editor.focus();document.execCommand(command,false,null);syncNotes();
+    });
+    toolbar.appendChild(button);
+  }
+  wrapper.append(toolbar,editor);
+  field.insertAdjacentElement('afterend',wrapper);
+  field.style.display='none';
+  function syncNotes(){
+    const html=cleanNotesHTML(editor.innerHTML);
+    field.value=editor.textContent.trim()?NOTES_RICH_PREFIX+html:'';
+  }
+  function loadNotes(raw){
+    const value=String(raw||'');
+    editor.innerHTML=value.startsWith(NOTES_RICH_PREFIX)?cleanNotesHTML(value.slice(NOTES_RICH_PREFIX.length)):esc(value).replace(/\r\n?/g,'\n').replace(/\n/g,'<br>');
+  }
+  editor.addEventListener('input',syncNotes);
+  editor.addEventListener('blur',syncNotes);
+  editor.addEventListener('paste',e=>{
+    e.preventDefault();
+    const plain=e.clipboardData.getData('text/plain');
+    document.execCommand('insertText',false,plain);
+    syncNotes();
+  });
+  const previousOpenForm=openForm;
+  openForm=function(r){previousOpenForm(r);loadNotes(r?.notes||'');};
+  $('#recipeForm').addEventListener('submit',syncNotes,true);
+}
+
 const session=(()=>{try{return JSON.parse(localStorage.getItem('maika_session'))}catch{return null}})();if(session){token=session.token;userId=session.userId;cloudFetch().catch(()=>{$('#syncBtn').innerHTML='☁ <span>Sync</span>'})}save();render();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 /* MAIKA'S COOKBOOK — PUBLIC READ-ONLY LIVE RECIPES
    Paste immediately ABOVE the final line: })();
