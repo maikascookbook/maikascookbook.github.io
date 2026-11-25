@@ -18,6 +18,7 @@
     const safe = n => {
       if (n.nodeType === 3) return document.createTextNode(n.nodeValue);
       if (n.nodeType !== 1) return document.createDocumentFragment();
+      if (['SCRIPT','STYLE','IFRAME','OBJECT'].includes(n.tagName)) return document.createDocumentFragment();
       const allowed = ['B','STRONG','I','EM','U','BR'];
       const out = allowed.includes(n.tagName)
         ? document.createElement(n.tagName.toLowerCase())
@@ -31,16 +32,17 @@
   }
 
   function decode(line) {
+    const clean = x => String(x).replace(/\\([.!,;:?_#*()\-])/g,'$1');
     if (!String(line).startsWith(PREFIX))
-      return {type:'item', html:escapeHTML(line)};
+      return {type:'item', html:escapeHTML(clean(line))};
     try {
       const obj = JSON.parse(decodeURIComponent(line.slice(PREFIX.length)));
       return {
         type:['heading','subheading','item'].includes(obj.t) ? obj.t : 'item',
-        html:sanitize(obj.h || '')
+        html:sanitize(clean(obj.h || ''))
       };
     } catch {
-      return {type:'item', html:escapeHTML(line)};
+      return {type:'item', html:escapeHTML(clean(line))};
     }
   }
 
@@ -108,6 +110,15 @@
       font-weight:700;min-width:1.4em
     }
     .maika-upgrade-item {margin:7px 0}
+    .maika-bulk-editor {min-height:180px;padding:12px;border:1px solid #ded4d5;white-space:pre-wrap;overflow-wrap:break-word;line-height:1.6}
+    .maika-bulk-editor h3,.maika-bulk-editor h4 {margin:12px 0 4px;font-weight:bold}
+    .method-list.maika-structured > li::before {content:none!important;display:none!important}
+    .method-list.maika-structured > li {counter-increment:none;display:grid;grid-template-columns:60px minmax(0,1fr);gap:15px}
+    .method-list.maika-structured > li.maika-section-heading,.method-list.maika-structured > li.maika-section-subheading {display:block}
+    .maika-upgrade-step-number {font-family:var(--mc-heading-font,Georgia);font-size:26px;color:#b68f83}
+    .maika-upgrade-step > span:last-child {min-width:0;overflow-wrap:break-word}
+    @media(max-width:600px){.method-list.maika-structured > li {grid-template-columns:42px minmax(0,1fr);gap:8px}}
+
   `;
   document.head.append(style);
 
@@ -145,136 +156,24 @@
   configureLogin();
 
   function makeEditor(field, label) {
-    const wrap = document.createElement('div');
-    wrap.className = 'maika-upgrade-wrap';
-
-    const toolbar = document.createElement('div');
-    toolbar.className = 'maika-upgrade-toolbar';
-    toolbar.innerHTML = '<strong>' + label + ' formatting</strong>';
-
-    let active = null;
-
-    for (const [cmd, txt] of [
-      ['bold','B'],['italic','I'],['underline','U']
-    ]) {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = txt;
-      b.title = cmd;
-      b.addEventListener('pointerdown', e => e.preventDefault());
-      b.onclick = () => {
-        if (active) {
-          active.focus();
-          document.execCommand(cmd, false, null);
-          sync();
-        }
-      };
-      toolbar.append(b);
+    const wrap = document.createElement('div'); wrap.className='maika-upgrade-wrap';
+    const toolbar=document.createElement('div'); toolbar.className='maika-upgrade-toolbar';
+    const editor=document.createElement('div'); editor.className='maika-bulk-editor';
+    editor.contentEditable='true'; editor.setAttribute('role','textbox'); editor.setAttribute('aria-multiline','true'); editor.setAttribute('aria-label',label);
+    wrap.append(toolbar,editor); field.after(wrap); field.style.display='none'; field.required=false;
+    for(const [cmd,val,txt] of [['bold',null,'B'],['italic',null,'I'],['underline',null,'U'],['formatBlock','h3','Heading'],['formatBlock','h4','Subheading'],['formatBlock','div','Normal text']]) {
+      const b=document.createElement('button'); b.type='button'; b.textContent=txt;
+      b.addEventListener('pointerdown',e=>e.preventDefault()); b.onclick=()=>{editor.focus();document.execCommand(cmd,false,val);sync();}; toolbar.append(b);
     }
-
-    const rows = document.createElement('div');
-    const actions = document.createElement('div');
-    actions.className = 'maika-upgrade-actions';
-    wrap.append(toolbar, rows, actions);
-    field.insertAdjacentElement('afterend', wrap);
-    field.style.display = 'none';
-    field.required = false;
-
-    function sync() {
-      field.value = [...rows.children].map(encode).filter(Boolean).join('\n');
+    function sync(){
+      const lines=[]; let buf='';
+      function flush(type='item'){const html=sanitize(buf);buf='';const box=document.createElement('div');box.innerHTML=html;if(box.textContent.trim())lines.push(PREFIX+encodeURIComponent(JSON.stringify({t:type,h:html})));}
+      function walk(n){if(n.nodeType===3){buf+=escapeHTML(n.nodeValue);return;}if(n.nodeType!==1)return;const tag=n.tagName;if(tag==='BR'){flush();return;}if(['DIV','P','LI','H1','H2','H3','H4','H5','H6'].includes(tag)){flush();if(tag==='DIV'||tag==='P'){[...n.childNodes].forEach(walk);flush();}else{buf=n.innerHTML;flush(/^H[1-3]$/.test(tag)?'heading':/^H[4-6]$/.test(tag)?'subheading':'item');}return;}if(['UL','OL'].includes(tag)){flush();[...n.childNodes].forEach(walk);return;}buf+=n.outerHTML;}
+      [...editor.childNodes].forEach(walk);flush();field.value=lines.join('\n');
     }
-
-    function add(type = 'item', html = '', at = null) {
-      const row = document.createElement('div');
-      row.className = 'maika-upgrade-row';
-
-      const select = document.createElement('select');
-      [
-        ['item', label === 'Method' ? 'Step' : 'Ingredient'],
-        ['heading','Heading'],
-        ['subheading','Subheading']
-      ].forEach(([v,t]) => {
-        const o = document.createElement('option');
-        o.value = v;
-        o.textContent = t;
-        select.append(o);
-      });
-      select.value = type;
-
-      const line = document.createElement('div');
-      line.className = 'maika-upgrade-line';
-      line.contentEditable = 'true';
-      line.setAttribute('role','textbox');
-      line.setAttribute('aria-label', label + ' ' + type);
-      line.innerHTML = sanitize(html);
-      line.addEventListener('focus', () => active = line);
-      line.addEventListener('input', sync);
-
-      line.addEventListener('paste', e => {
-        e.preventDefault();
-        document.execCommand(
-          'insertText', false, e.clipboardData.getData('text/plain')
-        );
-      });
-
-      line.addEventListener('keydown', e => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          const next = add('item','',row.nextSibling);
-          next.focus();
-        }
-      });
-
-      select.onchange = sync;
-      row.append(select,line);
-
-      for (const [txt,fn] of [
-        ['↑', () => {
-          if (row.previousSibling) rows.insertBefore(row,row.previousSibling);
-        }],
-        ['↓', () => {
-          if (row.nextSibling) rows.insertBefore(row.nextSibling,row);
-        }],
-        ['×', () => row.remove()]
-      ]) {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.textContent = txt;
-        b.title = txt === '×' ? 'Remove line'
-          : txt === '↑' ? 'Move up' : 'Move down';
-        b.onclick = () => {fn();sync();};
-        row.append(b);
-      }
-
-      if (at) rows.insertBefore(row,at);
-      else rows.append(row);
-      sync();
-      return line;
-    }
-
-    for (const [type,text] of [
-      ['item',label === 'Method' ? '+ Step' : '+ Ingredient'],
-      ['heading','+ Heading'],
-      ['subheading','+ Subheading']
-    ]) {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = text;
-      b.onclick = () => add(type).focus();
-      actions.append(b);
-    }
-
-    function load() {
-      rows.replaceChildren();
-      const raw = field.value.split(/\r?\n/).filter(x => x.trim());
-      raw.forEach(x => {
-        const d = decode(x);
-        add(d.type,d.html);
-      });
-      if (!raw.length) add();
-      sync();
-    }
-
+    function load(){editor.replaceChildren();for(const raw of field.value.split(/\r?\n/).filter(x=>x.trim())){const d=decode(raw);const el=document.createElement(d.type==='heading'?'h3':d.type==='subheading'?'h4':'div');el.innerHTML=d.html;editor.append(el);} }
+    editor.addEventListener('input',sync);
+    editor.addEventListener('paste',e=>{e.preventDefault();const html=e.clipboardData.getData('text/html');const plain=e.clipboardData.getData('text/plain');const doc=new DOMParser().parseFromString(html||'', 'text/html');const blocks=[...doc.body.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li')].filter(n=>!n.querySelector('p,li,h1,h2,h3,h4,h5,h6'));let content;if(blocks.length){content=blocks.map(n=>{const tag=/^H[1-3]$/.test(n.tagName)?'h3':/^H[4-6]$/.test(n.tagName)?'h4':'div';return '<'+tag+'>'+sanitize(n.innerHTML)+'</'+tag+'>';}).join('');}else{content=plain.split(/\r?\n/).map(line=>{const m=line.match(/^\s*(#{1,6})\s+(.*)$/);const tag=m?(m[1].length<4?'h3':'h4'):'div';return '<'+tag+'>'+escapeHTML(m?m[2]:line).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')+'</'+tag+'>';}).join('');}document.execCommand('insertHTML',false,content);sync();});
     return {load,sync};
   }
 
@@ -309,7 +208,7 @@
 
     function transform(list,isMethod) {
       const old = [...list.children].map(li => li.textContent);
-      if (!old.some(x => x.startsWith(PREFIX))) return;
+      if (!old.some(x => x.startsWith(PREFIX))) return; list.classList.add('maika-structured');
 
       list.replaceChildren();
       let number = 0;
@@ -328,10 +227,10 @@
 
           const num = document.createElement('span');
           num.className = 'maika-upgrade-step-number';
-          num.textContent = number + '.';
+          num.textContent = String(number).padStart(2,'0');
 
           const content = document.createElement('span');
-          content.innerHTML = item.html;
+          content.innerHTML = item.html; const walker=document.createTreeWalker(content,NodeFilter.SHOW_TEXT); const first=walker.nextNode(); if(first) first.nodeValue=first.nodeValue.replace(/^\s*\d+[.)]\s*/, '');
           li.append(num,content);
         } else {
           li.className = 'maika-upgrade-item';

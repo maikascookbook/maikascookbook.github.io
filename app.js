@@ -30,7 +30,7 @@ function library(){let list=recipes.filter(r=>(filter==='All'||r.category===filt
 const NOTES_RICH_PREFIX='MAIKA_RICH_V1:';
 function cleanNotesHTML(html){
   const doc=new DOMParser().parseFromString('<div>'+String(html||'')+'</div>','text/html');
-  const allowed=new Set(['B','STRONG','I','EM','U','P','DIV','BR','UL','OL','LI']);
+  const allowed=new Set(['B','STRONG','I','EM','U','P','DIV','BR','UL','OL','LI','H3','H4']);
   function safe(node){
     if(node.nodeType===3)return document.createTextNode(node.nodeValue);
     if(node.nodeType!==1)return document.createDocumentFragment();
@@ -43,7 +43,7 @@ function cleanNotesHTML(html){
   return root.innerHTML;
 }
 function notesHTML(value){
-  const raw=String(value||'');
+  const raw=String(value||'').replace(/\\([.!,;:?_#*()\-])/g,'$1');
   if(raw.startsWith(NOTES_RICH_PREFIX))return cleanNotesHTML(raw.slice(NOTES_RICH_PREFIX.length));
   return esc(raw).replace(/\r\n?/g,'\n').replace(/\n/g,'<br>');
 }
@@ -170,9 +170,10 @@ document.addEventListener('input',e=>{if(e.target.id==='searchRecipes'){search=e
           if (!remote.has(r.id) && !tombstones.has(r.id) &&
               (pending.has(r.id) || !r.id.startsWith('seed-'))) merged.push(r);
         }
+        const changed = JSON.stringify(recipes) !== JSON.stringify(merged);
         recipes = merged;
         save();
-        render();
+        if (changed && !document.querySelector('.recipe-page')) render();
         await uploadDeletes();
         for (const r of recipes) {
           if (pending.has(r.id) || (!remote.has(r.id) && !r.id.startsWith('seed-'))) await upload(r);
@@ -274,13 +275,13 @@ document.addEventListener('input',e=>{if(e.target.id==='searchRecipes'){search=e
   editor.setAttribute('role','textbox');
   editor.setAttribute('aria-label','Kitchen Notes');
   editor.setAttribute('aria-multiline','true');
-  const commands=[['bold','B','Bold'],['italic','I','Italic'],['underline','U','Underline'],['insertOrderedList','1.','Numbered list'],['insertUnorderedList','•','Bullet list']];
+  const commands=[['bold','B','Bold'],['italic','I','Italic'],['underline','U','Underline'],['insertOrderedList','1.','Numbered list'],['insertUnorderedList','•','Bullet list'],['formatBlock','H','Heading'],['formatBlock','h','Subheading']];
   for(const [command,label,title] of commands){
     const button=document.createElement('button');
     button.type='button';button.textContent=label;button.title=title;button.setAttribute('aria-label',title);
     button.addEventListener('pointerdown',e=>e.preventDefault());
     button.addEventListener('click',()=>{
-      editor.focus();document.execCommand(command,false,null);syncNotes();
+      editor.focus();document.execCommand(command,false,command==='formatBlock'?(label==='H'?'h3':'h4'):null);syncNotes();
     });
     toolbar.appendChild(button);
   }
@@ -300,7 +301,9 @@ document.addEventListener('input',e=>{if(e.target.id==='searchRecipes'){search=e
   editor.addEventListener('paste',e=>{
     e.preventDefault();
     const plain=e.clipboardData.getData('text/plain');
-    document.execCommand('insertText',false,plain);
+    const html=e.clipboardData.getData('text/html');
+    if(html) document.execCommand('insertHTML',false,cleanNotesHTML(html));
+    else document.execCommand('insertText',false,plain.replace(/\\([.!,;:?_#*()\-])/g,'$1'));
     syncNotes();
   });
   const previousOpenForm=openForm;
@@ -371,9 +374,7 @@ const session=(()=>{try{return JSON.parse(localStorage.getItem('maika_session'))
     const signature = JSON.stringify(recipes);
     if (signature !== loadPublicRecipes.lastSignature) {
       loadPublicRecipes.lastSignature = signature;
-      const position = window.scrollY;
-      render();
-      window.scrollTo(0, position);
+      if (!document.querySelector('.recipe-page')) render();
     }
   }
 
